@@ -1,9 +1,9 @@
-body {
+.body-full {
   height: 100vh;
 }
 
 .div-full {
-  height: 84vh;
+  height: 82vh;
   width: 100vw;
 }
 
@@ -19,7 +19,7 @@ body {
 }
 
 .navbar-height {
-  height: 8vh;
+  height: 10vh;
   margin-top: 0;
 }
 
