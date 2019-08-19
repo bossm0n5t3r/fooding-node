@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>fooding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/public/css/store_main.css">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/front.css">
+    <link rel="stylesheet" href="/public/css/modal.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg theme-bg-color static-top navbar-height">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="/public/img/logo-small.png" alt="">
+        </a>
+        <div class="navbar-search-box">
+          <div class="has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control" placeholder="가게 이름, 메뉴, 주소를 검색해보세요.">
+          </div>
+        </div>
+        <div class="text-right">
+          <i class='fas fa-home fa-3x'></i>
+          <i class='fas fa-store fa-3x'></i>
+          <i class='fas fa-user fa-3x'></i>
+        </div>
+      </div>
+    </nav>
+    <!-- Navigation -->
+    <!-- Main -->
+    <div class="container-fluid">
+      <div class="row card-columns store-bg-color">
+        <div class="store-card-width mx-auto">
+          <!-- 가게 이름 카드 -->
+          <div class="card store-card-top">
+            <div class="card-body">
+              <div class="store-name my-1 text-center"><h1>가게 이름</h1></div>
+            </div>
+          </div>
+          <!-- 가게 이름 카드 -->
+          <!-- 가게 상세 설명 카드 -->
+          <div class="card">
+            <div class="card-body store-card-detail mx-5">
+              <h3>상세정보</h3>
+              <hr/>
+              <!-- 주소 -->
+              <div class="placeinfo_default">
+                <h4 class="tit-detail pt-2">
+                  <span class="icon-common">
+                    <i class="material-icons">location_on</i>
+                  </span>
+                </h4>
+                <div class="location-detail ml-3">
+                  <span class="txt-common">주소</span>
+                  <span>지번</span>
+                </div>
+              </div>
+              <!-- 영업시간 -->
+              <div class="placeinfo_default">
+                <h4 class="tit-detail pt-2">
+                  <span class="icon-common">
+                    <i class="material-icons">access_time</i>
+                  </span>
+                </h4>
+                <div class="location-detail ml-3">
+                  <span class="txt-common">영업시간</span>
+                  <span>영업 시작 시간 ~ 영업 종료 시간</span>
+                </div>
+              </div>
+              <!-- 메뉴 테이블 -->
+              <table class="table mt-3 text-center">
+                <thead>
+                  <tr>
+                    <th>메뉴</th>
+                    <th>가격</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>메뉴 이름1</td>
+                    <td>메뉴 가격1</td>
+                  </tr>
+                  <tr>
+                    <td>메뉴 이름1</td>
+                    <td>메뉴 가격1</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- 업데이트 -->
+              <div class="placeinfo_default">
+                <h4 class="tit-detail pt-2">
+                  <span class="icon-common">
+                    <i class="material-icons">update</i>
+                  </span>
+                </h4>
+                <div class="location-detail ml-3">
+                  <span class="txt-common">업데이트</span>
+                  <span>2019.08.20</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 가게 상세 설명 카드 -->
+          <!-- 가게 사진 카드 -->
+          <div class="card">
+            <div class="card-body store-card-detail mx-5">
+                <div class="container">
+
+                  <h3>가게 사진</h3>
+                
+                  <hr class="mb-4">
+                
+                  <div class="row text-center text-lg-left">
+                
+                    <div class="col-lg-3 col-md-4 col-6">
+                      <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/pWkk7iiCoDM/400x300" alt="">
+                          </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6">
+                      <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">
+                          </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6">
+                      <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/EUfxH-pze7s/400x300" alt="">
+                          </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6">
+                      <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/M185_qYH8vg/400x300" alt="">
+                          </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6">
+                      <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/sesveuG_rNo/400x300" alt="">
+                          </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6">
+                      <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/AvhMzHwiE_0/400x300" alt="">
+                          </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6">
+                      <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/2gYsZUmockw/400x300" alt="">
+                          </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6">
+                      <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/EMSDtjVHdQ8/400x300" alt="">
+                          </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6">
+                      <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/8mUEy0ABdNE/400x300" alt="">
+                          </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6">
+                      <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/G9Rfc1qccH4/400x300" alt="">
+                          </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6">
+                      <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/aJeH0KcFkuc/400x300" alt="">
+                          </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6">
+                      <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/p2TQ-3Bh3Oo/400x300" alt="">
+                          </a>
+                    </div>
+                  </div>
+                
+                </div>
+            </div>
+          </div>
+          <!-- 가게 사진 카드 -->
+          <!-- 가게 댓글 카드 -->
+          <div class="card">
+            <div class="card-body store-card-detail mx-5">
+              <div class="store-comment-container">
+                <h4>댓글 3개</h4>
+                <hr/>
+                <div class="store-comment-write-area">
+                  <img src="/public/img/profile_image-300x300.jpg" class="store-comment-user-img">
+                  <div class="input-group mb-3 store-comment-write-box">
+                    <input type="text" class="form-control" placeholder="댓글을 입력하세요...">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">등록</button> 
+                    </div>
+                  </div>
+                </div>
+                <hr class="mt-0">
+                <div class="store-comment-area">
+                  <div class="store-comment mb-3">
+                    <div class="my-auto">
+                      <img src="/public/img/profile_image-300x300.jpg" class="store-comment-user-img">
+                    </div>
+                    <div class="store-comment-container">
+                      <strong>아이디</strong>
+                      <p class="store-comment-desc">여기 정말 맛집이네요~</p>
+                    </div>
+                  </div>
+                  <div class="store-comment mb-3">
+                    <div class="my-auto">
+                      <img src="/public/img/profile_image-300x300.jpg" class="store-comment-user-img">
+                    </div>
+                    <div class="store-comment-container">
+                      <strong>아이디</strong>
+                      <p class="store-comment-desc">여기 정말 맛집이네요~</p>
+                    </div>
+                  </div>
+                  <div class="store-comment mb-3">
+                    <div class="my-auto">
+                      <img src="/public/img/profile_image-300x300.jpg" class="store-comment-user-img">
+                    </div>
+                    <div class="store-comment-container">
+                      <strong>아이디</strong>
+                      <p class="store-comment-desc">여기 정말 맛집이네요~</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 가게 댓글 카드 -->
+        </div>
+      </div>
+    </div>
+    <!-- Main -->
+    <!-- footer -->
+    <footer class="py-4 bg-dark text-white-50 footer-height">
+      <div class="container text-center">
+        Copyright &copy; fooding
+      </div>
+    </footer>
+    <!-- footer -->
+  </body>
+</html>
