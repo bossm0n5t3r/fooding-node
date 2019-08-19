@@ -81,3 +81,7 @@
 .store-comment-desc {
   margin: 5px 0;
 }
+
+.store-comment-modify, .store-comment-delete {
+  font-size: 15px;
+}
