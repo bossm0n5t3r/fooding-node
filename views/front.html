@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>fooding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/public/css/front.css">
+    <link rel="stylesheet" href="/public/css/modal.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg theme-bg-color static-top navbar-height">
+      <div class="container-fluid">
+        <a class="navbar-brand"></a>
+        <div class="text-right">
+          <button type="button" class="btn btn-primary RbtnMargin" data-toggle="modal" data-target="#login-modal">로그인</button>
+          <button type="button" class="btn btn-secondary RbtnMargin" data-toggle="modal" data-target="#register-modal">회원가입</button>
+        </div>
+      </div>
+    </nav>
+    <!-- Navigation -->
+    <!-- Main -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="div-full">
+          <div class="div-half theme-bg-color">
+            <div class="logo-box">
+              <img src="/public/img/logo.png">
+            </div>
+          </div>
+          <div class="div-half">
+            <div class="search-box">
+              <div class="form-group has-search">
+                <span class="fa fa-search form-control-feedback"></span>
+                <input type="text" class="form-control" placeholder="가게 이름, 메뉴, 주소를 검색해보세요.">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main -->
+    <!-- login-modal -->
+    <div id="login-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="card card-signin my-5">
+            <div class="card-body">
+              <h5 class="card-title text-center">Sign In</h5>
+              <form class="form-signin">
+                <div class="form-label-group">
+                  <input type="email" id="login-inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <label for="inputEmail">Email address</label>
+                </div>
+  
+                <div class="form-label-group">
+                  <input type="password" id="login-inputPassword" class="form-control" placeholder="Password" required>
+                  <label for="inputPassword">Password</label>
+                </div>
+  
+                <div class="custom-control custom-checkbox mb-3">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">Remember password</label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                <hr class="my-4">
+                <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
+                <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Modal content-->
+      </div>
+    </div>
+    <!-- login-modal -->
+    <!-- register-modal -->
+    <div id="register-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="card card-signin flex-row my-5">
+            <div class="card-body">
+              <h5 class="card-title text-center">Register</h5>
+              <form class="form-signin">
+                <div class="form-label-group">
+                  <input type="text" id="inputUserame" class="form-control" placeholder="Username" required autofocus>
+                  <label for="inputUserame">Username</label>
+                </div>
+  
+                <div class="form-label-group">
+                  <input type="email" id="register-inputEmail" class="form-control" placeholder="Email address" required>
+                  <label for="inputEmail">Email address</label>
+                </div>
+                
+                <hr>
+  
+                <div class="form-label-group">
+                  <input type="password" id="register-inputPassword" class="form-control" placeholder="Password" required>
+                  <label for="inputPassword">Password</label>
+                </div>
+                
+                <div class="form-label-group">
+                  <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
+                  <label for="inputConfirmPassword">Confirm password</label>
+                </div>
+  
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+                <a class="d-block text-center mt-2 small" href="#">Sign In</a>
+                <hr class="my-4">
+                <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
+                <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Modal content-->
+      </div>
+    </div>
+    <!-- register-modal -->
+    <!-- footer -->
+    <footer class="py-4 bg-dark text-white-50 footer-height">
+      <div class="container text-center">
+        Copyright &copy; fooding
+      </div>
+    </footer>
+    <!-- footer -->
+  </body>
+</html>

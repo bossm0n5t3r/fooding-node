@@ -1,0 +1,81 @@
+body {
+  height: 100vh;
+}
+
+.div-full {
+  height: 84vh;
+  width: 100vw;
+}
+
+.div-full-height {
+  height: 100vh;
+}
+
+/* Navbar custom */
+
+.navbar-search-box {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.navbar-height {
+  height: 8vh;
+  margin-top: 0;
+}
+
+.footer-height {
+  height: 8vh;
+  margin-bottom: 0;
+}
+
+.full-width {
+  width: 100vw;
+}
+
+.div-half {
+  height: 50%;
+  padding:0px !important;
+}
+
+.RbtnMargin {
+  margin-right: 10px;
+}
+
+.theme-bg-color {
+  background-color: limegreen;
+}
+
+.logo-box {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Styles for wrapping the search box */
+
+.search-box {
+  width: 50%;
+  margin: 50px auto;
+  margin-top: -20px;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+  padding-left: 2.5rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
