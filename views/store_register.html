@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>fooding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/public/css/store_register.css">
+    <link rel="stylesheet" href="/public/css/store_main.css">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/front.css">
+    <link rel="stylesheet" href="/public/css/modal.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg theme-bg-color static-top navbar-height">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="/public/img/logo-small.png" alt="">
+        </a>
+        <div class="navbar-search-box">
+          <div class="has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control" placeholder="가게 이름, 메뉴, 주소를 검색해보세요.">
+          </div>
+        </div>
+        <div class="text-right">
+          <i class='fas fa-home fa-3x'></i>
+          <i class='fas fa-store fa-3x'></i>
+          <i class='fas fa-user fa-3x'></i>
+        </div>
+      </div>
+    </nav>
+    <!-- Navigation -->
+    <!-- Main -->
+    <div class="container-fluid">
+      <div class="row card-columns store-bg-color div-full-min-height">
+        <div class="store-card-width mx-auto">
+          <!-- 가게 등록 카드 -->
+          <div class="card store-card-top">
+            <div class="card-body mx-5">
+              <div class="store-name text-center"><h1>가게 등록</h1></div>
+              <hr/>
+              <div class="store-register-area">
+                <div class="store-register-container mb-4">
+                  <div class="store-register-key text-center my-auto">
+                    <strong>상호명</strong>
+                  </div>
+                  <div class="store-register-value">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="store-register-container mb-4">
+                  <div class="store-register-key text-center my-auto">
+                    <strong>주소</strong>
+                  </div>
+                  <div class="input-group store-register-value">
+                    <input type="text" class="form-control">
+                    <div class="input-group-append">
+                      <button type="button" class="btn btn-success float-left">우편번호검색</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="store-register-container mb-4">
+                  <div class="store-register-key text-center my-auto">
+                    <strong>영업시간</strong>
+                  </div>
+                  <div class="store-register-value">
+                    <input type="text" class="form-control store-register-start-time" placeholder="ex) 13:00">
+                  </div>
+                  <span class="my-auto mx-2">
+                    <strong>~</strong>
+                  </span>
+                  <div class="store-register-value">
+                    <input type="text" class="form-control store-register-end-time" placeholder="ex) 22:00">
+                  </div>
+                </div>
+                <div class="store-register-container mb-4 mx-4">
+                  <table class="table text-center">
+                    <thead>
+                      <tr>
+                        <th>메뉴이름</th>
+                        <th>가격</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input type="text" class="form-control" placeholder="메뉴 이름 1"></td>
+                        <td><input type="text" class="form-control" placeholder="메뉴 가격 1"></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" class="form-control" placeholder="메뉴 이름 2"></td>
+                        <td><input type="text" class="form-control" placeholder="메뉴 가격 2"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <button type="button" class="btn btn-danger float-left mb-5 ml-4">최소하기</button>
+              <button type="button" class="btn btn-primary float-right mb-5 mr-4">등록하기</button>
+            </div>
+          </div>
+          <!-- 가게 등록 카드 -->
+        </div>
+      </div>
+    </div>
+    <!-- Main -->
+    <!-- footer -->
+    <footer class="py-4 bg-dark text-white-50 footer-height">
+      <div class="container text-center">
+        Copyright &copy; fooding
+      </div>
+    </footer>
+    <!-- footer -->
+  </body>
+</html>

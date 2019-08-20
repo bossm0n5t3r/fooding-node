@@ -1,0 +1,16 @@
+.store-register-container {
+  display: flex;
+}
+
+.store-register-key {
+  width: 200px;
+  float: left;
+}
+
+.store-register-value {
+  flex: 2;
+}
+
+.store-register-start-time, .store-register-end-time {
+  width: 200px;
+}
