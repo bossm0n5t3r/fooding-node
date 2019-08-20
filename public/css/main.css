@@ -27,3 +27,110 @@
   width: 150px;
   border-radius: 50%;
 }
+
+/* store part */
+
+.store-bg-color {
+  background-color: rgb(224, 224, 224);
+}
+
+.store-card-width {
+  width: 800px;
+}
+
+.store-card-detail {
+  font-size: 17px;
+  letter-spacing: -1px;
+  line-height: 24px;
+}
+
+.store-card-top {
+  margin-top: 20px;
+}
+
+.fas.fa-3x {
+  padding-right: 10px;
+  color: white;
+}
+
+.location-detail {
+  position: relative;
+  padding-left: 24px;
+}
+
+.icon-common {
+  width: 13px;
+  height: 18px;
+}
+
+.placeinfo_default {
+  min-height: 22px;
+  padding-bottom: 10px;
+  line-height: 22px;
+}
+
+.tit-detail {
+  float: left;
+}
+
+.txt-common {
+  display: block;
+  word-break: break-all;
+}
+
+.icon-common .material-icons {
+  font-size: 30px;
+}
+
+.store-comment-write-area {
+  display: flex;
+}
+
+.store-comment-user-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.store-comment-write-box {
+  position: relative;
+  padding-left: 10px;
+}
+
+.store-comment-area {
+  min-height: 200px;
+}
+
+.store-comment {
+  display: flex;
+}
+
+.store-comment-container {
+  position: relative;
+  padding-left: 10px;
+}
+
+.store-comment-desc {
+  margin: 5px 0;
+}
+
+.store-comment-modify, .store-comment-delete {
+  font-size: 15px;
+}
+
+.store-register-container {
+  display: flex;
+}
+
+.store-register-key {
+  width: 200px;
+  float: left;
+}
+
+.store-register-value {
+  flex: 2;
+}
+
+.store-register-start-time, .store-register-end-time {
+  width: 200px;
+}
