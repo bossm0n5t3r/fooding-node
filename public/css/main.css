@@ -134,3 +134,7 @@
 .store-register-start-time, .store-register-end-time {
   width: 200px;
 }
+
+.profile-blank {
+  height: 30vh;
+}
