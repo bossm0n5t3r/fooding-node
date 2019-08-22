@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('header') %>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <%- include('navbar-not-login') %>
+    <!-- Main -->
+    <div class="container-fluid">
+      <div class="row card-columns store-bg-color div-full-min-height">
+        <div class="front-card-width mx-auto">
+          <!-- 회원가입 카드 -->
+          <div class="card card-signin flex-row my-5">
+            <div class="card-body">
+              <h5 class="card-title text-center">Register</h5>
+              <form class="form-signin" id="registerForm" method="POST" action="/auth/join">
+                <div class="form-label-group">
+                  <input type="text" id="inputUserame" name="user_name" class="form-control" placeholder="Username" required autofocus>
+                  <label for="inputUserame">Username</label>
+                </div>
+    
+                <div class="form-label-group">
+                  <input type="email" id="register-inputEmail" name="user_email" class="form-control" placeholder="Email address" required>
+                  <label for="inputEmail">Email address</label>
+                </div>
+                
+                <hr>
+    
+                <div class="form-label-group">
+                  <input type="password" id="register-inputPassword" name="user_password" class="form-control" placeholder="Password" required>
+                  <label for="inputPassword">Password</label>
+                </div>
+                
+                <div class="form-label-group">
+                  <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
+                  <label for="inputConfirmPassword">Confirm password</label>
+                </div>
+    
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" id="registerBtn" type="submit">Register</button>
+                <a class="d-block text-center mt-2 small" href="#">Sign In</a>
+                <hr class="my-4">
+                <%#
+                <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
+                <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
+                #%>
+                <a href="/auth/kakao"><img src="/img/kakao_login_btn/kr/kakao_account_login_btn_large_wide.png" class="btn-kakao"></a>
+              </form>
+            </div>
+          </div>
+          <!-- 회원가입 카드 -->
+        </div>
+      </div>
+    </div>
+    <!-- Main -->
+    <!-- footer -->
+    <%- include('footer') %>
+  </body>
+</html>
