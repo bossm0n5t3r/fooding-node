@@ -3,6 +3,11 @@
 }
 
 .div-full {
+  height: 82%;
+  width: 100vw;
+}
+
+.main-div-full {
   height: 82vh;
   width: 100vw;
 }
@@ -23,6 +28,7 @@
   margin: 0 auto;
 }
 
+/*
 .navbar-height {
   height: 10vh;
   margin-top: 0;
@@ -32,6 +38,7 @@
   height: 8vh;
   margin-bottom: 0;
 }
+*/
 
 .full-width {
   width: 100vw;
@@ -90,7 +97,8 @@
 }
 
 .carousel-item {
-  min-height: 400px;
+  height: 40vh;
+  min-height: 100px;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
