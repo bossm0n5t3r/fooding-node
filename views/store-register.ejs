@@ -49,7 +49,7 @@
                     <input type="text" class="form-control store-register-end-time" placeholder="ex) 22:00">
                   </div>
                 </div>
-                <div class="store-register-container mb-4 mx-4">
+                <div class="store-register-container mx-4">
                   <table class="table text-center">
                     <thead>
                       <tr>
@@ -69,9 +69,42 @@
                     </tbody>
                   </table>
                 </div>
+                <div class="store-register-container mb-4">
+                  <div class="store-register-key text-center my-auto">
+                    <strong>가게 사진 1</strong>
+                  </div>
+                  <div class="input-group store-register-value">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="customFile">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="store-register-container mb-4">
+                  <div class="store-register-key text-center my-auto">
+                    <strong>가게 사진 2</strong>
+                  </div>
+                  <div class="input-group store-register-value">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="customFile">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="store-register-container mb-4">
+                  <div class="store-register-key text-center my-auto">
+                    <strong>가게 사진 3</strong>
+                  </div>
+                  <div class="input-group store-register-value">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="customFile">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <button type="button" class="btn btn-danger float-left mb-5 ml-4">취소하기</button>
-              <button type="button" class="btn btn-primary float-right mb-5 mr-4">등록하기</button>
+              <a href="/main"><button type="button" class="btn btn-danger float-left mb-4 ml-4">돌아가기</button></a>
+              <button type="button" class="btn btn-primary float-right mb-4 mr-4">등록하기</button>
             </div>
           </div>
           <!-- 가게 등록 카드 -->
@@ -82,4 +115,11 @@
     <!-- footer -->
     <%- include('footer') %>
   </body>
+  <script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+  </script>
 </html>
