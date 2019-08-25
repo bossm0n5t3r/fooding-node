@@ -10,9 +10,7 @@ const sequelize = new Sequelize(
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.User = sequelize.import('./user');
-
-/*
+db.User = require('./user')(sequelize, Sequelize);
 db.Store = require('./store')(sequelize, Sequelize);
 db.StoreCategory = require('./store_category')(sequelize, Sequelize);
 db.StoreReview = require('./store_review')(sequelize, Sequelize);
@@ -28,8 +26,5 @@ db.StoreReview.belongsTo(db.User);
 
 db.Store.hasMany(db.StoreReview);
 db.StoreReview.belongsTo(db.Store);
-*/
 
 module.exports = db;
-
-//TODO Sequelize 5 연결부분 적용하기
