@@ -1,7 +1,7 @@
 {
   "name": "fooding-node",
   "version": "0.0.1",
-  "description": "길거리 푸드트럭 검색 사이트",
+  "description": "길거리 음식 검색 사이트",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
