@@ -1,0 +1,38 @@
+{
+  "name": "fooding-node",
+  "version": "0.0.1",
+  "description": "길거리 푸드트럭 검색 사이트",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bossm0n5t3r/fooding-node.git"
+  },
+  "author": "bossm0n5t3r",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bossm0n5t3r/fooding-node/issues"
+  },
+  "homepage": "https://github.com/bossm0n5t3r/fooding-node#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.0.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.5",
+    "passport": "^0.4.0",
+    "passport-kakao": "0.0.5",
+    "passport-local": "^1.0.0",
+    "sequelize": "^4.44.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
