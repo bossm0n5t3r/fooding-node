@@ -19,6 +19,10 @@ router.get('/join', isNotLoggedIn, (req, res) => {
   });
 });
 
+router.post('/join', isNotLoggedIn, (req, res) => {
+  res.redirect('join');
+});
+
 router.get('/login', isNotLoggedIn, (req, res) => {
   res.render('login', {
     title: '로그인 - fooding',
