@@ -27,6 +27,14 @@ module.exports = (sequelize, DataTypes) => (
       type: DataTypes.STRING(30),
       allowNull: true,
     },
+    user_token: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
+    },
+    user_approved: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
   }, {
     timestamps: true,
     paranoid: true,
