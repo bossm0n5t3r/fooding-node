@@ -25,6 +25,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
       user_name,
       user_password: hash,
     });
+    req.flash('msg', '가입을 축하합니다! 로그인 후 이용해주세요!');
     return res.redirect('/');
   } catch (error) {
     console.error(error);
