@@ -16,25 +16,27 @@
               <h5 class="card-title text-center">Register</h5>
               <form class="form-signin" id="registerForm" method="POST" action="/auth/join">
                 <div class="form-label-group">
-                  <input type="text" id="inputUserame" name="user_name" class="form-control" placeholder="Username" required autofocus>
-                  <label for="inputUserame">Username</label>
+                  <input type="text" id="register-inputUserame" name="user_name" class="form-control" placeholder="Username" required autofocus>
+                  <label for="register-inputUserame">Username</label>
                 </div>
+                <button class="btn btn-lg btn-success btn-block text-uppercase" id="id-check-btn">중복확인</button> 
+                <p class="text-center" id="id-check"></p>
     
                 <div class="form-label-group">
                   <input type="email" id="register-inputEmail" name="user_email" class="form-control" placeholder="Email address" required>
-                  <label for="inputEmail">Email address</label>
+                  <label for="register-inputEmail">Email address</label>
                 </div>
                 
                 <hr>
     
                 <div class="form-label-group">
                   <input type="password" id="register-inputPassword" name="user_password" class="form-control" placeholder="Password" required>
-                  <label for="inputPassword">Password</label>
+                  <label for="register-inputPassword">Password</label>
                 </div>
                 
                 <div class="form-label-group">
                   <input type="password" id="register-inputConfirmPassword" class="form-control" placeholder="Password" required>
-                  <label for="inputConfirmPassword">Confirm password</label>
+                  <label for="register-inputConfirmPassword">Confirm password</label>
                 </div>
     
                 <button class="btn btn-lg btn-primary btn-block text-uppercase" id="registerBtn">Register</button>
