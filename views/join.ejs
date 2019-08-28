@@ -4,6 +4,13 @@
     <%- include('header') %>
   </head>
   <body>
+    <!-- Alert -->
+    <% if (joinError.length > 0) { %>
+      <div class="alert alert-danger alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>가입 실패!</strong> <%= joinError %>
+      </div>
+    <% } %>
     <!-- Navigation -->
     <%- include('navbar-not-login') %>
     <!-- Main -->
@@ -19,7 +26,7 @@
                   <input type="text" id="register-inputUserame" name="user_name" class="form-control" placeholder="Username" required autofocus>
                   <label for="register-inputUserame">Username</label>
                 </div>
-                <button class="btn btn-lg btn-success btn-block text-uppercase" id="id-check-btn">중복확인</button> 
+                <button class="btn btn-lg btn-success btn-block text-uppercase" id="id-check-btn" type="button">아이디 중복체크</button> 
                 <p class="text-center" id="id-check"></p>
     
                 <div class="form-label-group">
@@ -39,8 +46,8 @@
                   <label for="register-inputConfirmPassword">Confirm password</label>
                 </div>
     
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" id="registerBtn">Register</button>
-                <a class="d-block text-center mt-2 small" href="#">Sign In</a>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" id="registerBtn" type="button">Register</button>
+                <a class="d-block text-center mt-2 small" href="/login">Sign In</a>
                 <hr class="my-4">
                 <%#
                 <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
