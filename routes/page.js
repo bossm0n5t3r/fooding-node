@@ -25,8 +25,7 @@ router.post('/join', isNotLoggedIn, (req, res) => {
 router.get('/login', isNotLoggedIn, (req, res) => {
   res.render('login', {
     title: '로그인 - fooding',
-    user: req.user,
-    joinError: req.flash('joinError'),
+    loginError: req.flash('loginError'),
   });
 });
 
