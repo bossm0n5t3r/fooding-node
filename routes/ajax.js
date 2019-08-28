@@ -18,4 +18,19 @@ router.post('/id-check', async (req, res, next) => {
   }
 });
 
+router.post('/email-check', async (req, res, next) => {
+  const { user_email } = req.body;
+  try {
+    const exUser = await User.find({ where: { user_email } });
+    let result = 1;
+    if (exUser) {
+      result = 0;
+    }
+    return res.send({ 'result': result });
+  } catch (error) {
+    console.error(error);
+    return next(error);
+  }
+});
+
 module.exports = router;
