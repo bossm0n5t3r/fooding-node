@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', isNotLoggedIn, (req, res, next) => {
   res.render('front', {
     title: 'Welcome to Fooding',
-    user: req.user,
+    msg: req.flash('msg'),
     loginError: req.flash('loginError'),
   });
 });
@@ -14,7 +14,6 @@ router.get('/', isNotLoggedIn, (req, res, next) => {
 router.get('/join', isNotLoggedIn, (req, res) => {
   res.render('join', {
     title: '회원가입 - fooding',
-    user: req.user,
     joinError: req.flash('joinError'),
   });
 });
