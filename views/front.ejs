@@ -4,6 +4,13 @@
     <%- include('header') %>
   </head>
   <body class="body-full">
+    <!-- Alert -->
+    <% if (msg.length > 0) { %>
+    <div class="alert alert-success alert-dismissible fade show">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>가입 성공!</strong> <%= msg %>
+    </div>
+    <% } %>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
