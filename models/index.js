@@ -15,7 +15,7 @@ db.Store = require('./store')(sequelize, Sequelize);
 db.StoreCategory = require('./store_category')(sequelize, Sequelize);
 db.StoreReview = require('./store_review')(sequelize, Sequelize);
 
-db.User.hasMany(db.Store);
+db.User.hasOne(db.Store);
 db.Store.belongsTo(db.User);
 
 db.StoreCategory.hasMany(db.Store);
