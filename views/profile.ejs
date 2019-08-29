@@ -15,16 +15,13 @@
             <div class="card-body mx-5">
               <div class="store-name text-center"><h1>프로필</h1></div>
               <hr/>
-              <div class="store-register-area">
+              <div class="store-register-area mt-5">
                 <div class="store-register-container mb-4 mr-4">
                   <div class="store-register-key text-center my-auto">
                     <strong>이메일</strong>
                   </div>
-                  <div class="input-group store-register-value">
-                    <input type="text" class="form-control">
-                    <div class="input-group-append">
-                      <button type="button" class="btn btn-success float-left">인증하기</button>
-                    </div>
+                  <div class="store-register-value">
+                    <span><%= user.user_email %></span>
                   </div>
                 </div>
                 <div class="store-register-container mb-4 mr-4">
@@ -59,7 +56,11 @@
                     <strong>가게이름</strong>
                   </div>
                   <div class="store-register-value">
-                    <a href="/store-modify"><span>가게이름 1</span></a>
+                    <% if (user.user_hasStore) { %>
+                      <a href="/store-modify"><span>가게이름 1</span></a>
+                    <% } else { %>
+                      <a href="/store-register"><span>등록된 가게가 없습니다. 만드실래요?</span></a>
+                    <% } %>
                   </div>
                 </div>
                 <div class="profile-blank"></div>
