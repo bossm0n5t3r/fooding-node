@@ -26,7 +26,11 @@
             <a class="nav-link" href="/main"><i class='fa fa-home fa-2x'></i></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/store-register"><i class='fa fa-store fa-2x'></i></a>
+            <% if (user.user_hasStore) { %>
+              <a class="nav-link" href="/store"><i class='fa fa-store fa-2x'></i></a>
+            <% } else { %>
+                <a class="nav-link" href="/store-register"><i class='fa fa-store fa-2x'></i></a>
+            <% } %>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="/profile"><i class='fa fa-user fa-2x'></i></a>
