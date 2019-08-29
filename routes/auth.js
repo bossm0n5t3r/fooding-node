@@ -29,6 +29,7 @@ router.post('/join-mail', isNotLoggedIn, async (req, res, next) => {
       user_password: hash,
       user_token: token,
       user_approved: 0,
+      user_hasStore: 0,
     });
     // 인증 메일 발송 부분
     let transporter = nodemailer.createTransport({

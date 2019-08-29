@@ -35,6 +35,10 @@ module.exports = (sequelize, DataTypes) => (
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
+    user_hasStore: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
   }, {
     timestamps: true,
     paranoid: true,
