@@ -22,6 +22,7 @@ module.exports = (passport) => {
           user_name: profile.displayName,
           user_snsId: profile.id,
           user_provider: 'kakao',
+          user_approved: 1,
         });
         done(null, newUser);
       }
