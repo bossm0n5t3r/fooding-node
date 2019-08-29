@@ -19,7 +19,10 @@ $(document).ready(function() {
   });
 
   $("#register-inputEmail").keyup(function() {
-    emailCheck();
+    var inputEmail = $("#register-inputEmail").val();
+    if (inputEmail.includes('@')) {
+      emailCheck();
+    };
   });
 
   $("#registerBtn").click(function() {
