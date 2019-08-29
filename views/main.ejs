@@ -2,6 +2,9 @@
 <html>
   <head>
     <%- include('header') %>
+    <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=<%= appkey %>&libraries=services,clusterer,drawing"></script>
+    <script src="/js/main.js"></script>
   </head>
   <body class="body-full">
     <!-- Navigation -->
@@ -9,11 +12,11 @@
     <!-- Main -->
     <div class="container-fluid">
       <div class="row main-div-full">
-          <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 split-left">
-            <div class="centered">
+          <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 split-left" id="map">
+            <!-- <div class="centered">
               <h2>Jane Flex</h2>
               <p>Some text.</p>
-            </div>
+            </div> -->
           </div>
           
           <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 split-right">
