@@ -3,7 +3,7 @@ const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 
 const router = express.Router();
 
-router.get('/', isNotLoggedIn, (req, res, next) => {
+router.get('/', isNotLoggedIn, (req, res) => {
   res.render('front', {
     title: 'Welcome to Fooding',
     msg: req.flash('msg'),
@@ -32,7 +32,7 @@ router.get('/login', isNotLoggedIn, (req, res) => {
 router.get('/main', isLoggedIn, (req, res, next) => {
   res.render('main', {
     title: '메인 화면 - Fooding',
-    user: req.user,
+    appkey: process.env.KAKAO_JS,
   });
 });
 
