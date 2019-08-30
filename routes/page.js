@@ -37,6 +37,13 @@ router.get('/main', isLoggedIn, (req, res, next) => {
   });
 });
 
+router.get('/store', isLoggedIn, (req, res, next) => {
+  res.render('store', {
+    title: '가게 화면 - Fooding',
+    user: req.user,
+  });
+});
+
 router.get('/store-register', isLoggedIn, (req, res, next) => {
   res.render('store-register', {
     title: '가게 등록 화면 - Fooding',
