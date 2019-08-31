@@ -27,6 +27,7 @@ router.post('/join-mail', isNotLoggedIn, async (req, res, next) => {
       user_email,
       user_name,
       user_password: hash,
+      user_img: '/img/profile/profile_image.jpg',
       user_token: token,
       user_approved: 0,
       user_hasStore: 0,

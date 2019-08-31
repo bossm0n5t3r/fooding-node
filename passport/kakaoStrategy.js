@@ -20,6 +20,7 @@ module.exports = (passport) => {
         const newUser = await User.create({
           user_email: profile._json && profile._json.kaccount_email,
           user_name: profile.displayName,
+          user_img: '/img/profile/profile_image.jpg',
           user_snsId: profile.id,
           user_provider: 'kakao',
           user_approved: 1,
