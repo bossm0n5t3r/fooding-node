@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  $("#profile-back-btn").click(function() {
-    let check = confirm("돌아가면 모든 내용은 지워집니다. 돌아가시겠습니까?");
+  $("#main-back-btn").click(function() {
+    let check = confirm("메인 화면으로 돌아가면 모든 내용은 지워집니다. 메인화면으로 돌아가시겠습니까?");
     if (check) {
       window.location.href = "http://localhost:8001/main";
     }
