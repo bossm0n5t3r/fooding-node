@@ -2,9 +2,17 @@
 <html>
   <head>
     <%- include('header') %>
+    <script src="/js/profile.js"></script>
     <script src="/js/upload.js"></script>
   </head>
   <body>
+    <!-- Alert -->
+    <% if (profileMsg.length > 0) { %>
+      <div class="alert alert-success alert-dismissible fade show text-center">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= profileMsg %>
+      </div>
+    <% } %>
     <!-- Navigation -->
     <%- include('navbar-user') %>
     <!-- Main -->
@@ -12,7 +20,7 @@
       <div class="row card-columns store-bg-color div-full-min-height">
         <div class="store-card-width mx-auto">
           <!-- 프로필 카드 -->
-          <form method="POST" enctype="multipart/form-data" action="/upload/profile">
+          <form method="POST" id="profile" enctype="multipart/form-data" action="/upload/profile">
             <div class="card store-card-top">
               <div class="card-body mx-5">
                 <h1 class="card-title text-center">프로필</h1>
@@ -34,7 +42,7 @@
                       <strong>비밀번호</strong>
                     </div>
                     <div class="store-register-value">
-                      <input type="text" class="form-control" placeholder="비밀번호 변경 시에만 입력해주세요.">
+                      <input type="text" class="form-control" name="user_password" id="profile-inputPassword" placeholder="비밀번호 변경 시에만 입력해주세요.">
                     </div>
                   </div>
                   <div class="store-register-container mb-4 mr-4">
@@ -42,7 +50,7 @@
                       <strong>비밀번호 확인</strong>
                     </div>
                     <div class="store-register-value">
-                      <input type="text" class="form-control" placeholder="비밀번호 변경 시에만 입력해주세요.">
+                      <input type="text" class="form-control" id="profile-inputConfirmPassword" placeholder="비밀번호 변경 시에만 입력해주세요.">
                     </div>
                   </div>
                   <div class="store-register-container mb-4 mr-4">
@@ -70,8 +78,8 @@
                   </div>
                   <div class="profile-blank"></div>
                 </div>
-                <a href="/main"><button type="button" class="btn btn-danger float-left mb-4 ml-4">돌아가기</button></a>
-                <button type="button" class="btn btn-primary float-right mb-4 mr-4">수정하기</button>
+                <button type="button" class="btn btn-danger float-left mb-4 ml-4" id="profile-back-btn">돌아가기</button>
+                <button type="button" class="btn btn-primary float-right mb-4 mr-4" id="profile-edit-btn">수정하기</button>
               </div>
             </div>
           </form>
