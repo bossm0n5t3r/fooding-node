@@ -1,9 +1,9 @@
-const express = require('express');
-const { User } = require('../models');
+const express = require("express");
+const { User } = require("../models");
 
 const router = express.Router();
 
-router.post('/id-check', async (req, res, next) => {
+router.post("/id-check", async (req, res, next) => {
   const { user_name } = req.body;
   try {
     const exUser = await User.find({ where: { user_name } });
@@ -11,14 +11,14 @@ router.post('/id-check', async (req, res, next) => {
     if (exUser) {
       result = 0;
     }
-    return res.send({ 'result': result });
+    return res.send({ result: result });
   } catch (error) {
     console.error(error);
     return next(error);
   }
 });
 
-router.post('/email-check', async (req, res, next) => {
+router.post("/email-check", async (req, res, next) => {
   const { user_email } = req.body;
   try {
     const exUser = await User.find({ where: { user_email } });
@@ -26,7 +26,7 @@ router.post('/email-check', async (req, res, next) => {
     if (exUser) {
       result = 0;
     }
-    return res.send({ 'result': result });
+    return res.send({ result: result });
   } catch (error) {
     console.error(error);
     return next(error);
