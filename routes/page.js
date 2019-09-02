@@ -62,6 +62,7 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
   res.render('profile', {
     title: '프로필 - Fooding',
     user: req.user,
+    profileMsg: req.flash("profileMsg"),
   });
 });
 
