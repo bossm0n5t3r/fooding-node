@@ -3,7 +3,9 @@ $(document).ready(function() {
   var notEmailCheck = true;
 
   $("#register-inputUserame").keyup(function() {
-    var inputUserame = $("#register-inputUserame").val().trim();
+    var inputUserame = $("#register-inputUserame")
+      .val()
+      .trim();
     if (inputUserame.length == 0) {
       $("#id-check").css("color", "red");
       $("#id-check").html("아이디를 입력해주세요.");
@@ -19,17 +21,27 @@ $(document).ready(function() {
   });
 
   $("#register-inputEmail").keyup(function() {
-    var inputEmail = $("#register-inputEmail").val().trim();
+    var inputEmail = $("#register-inputEmail")
+      .val()
+      .trim();
     if (inputEmail.includes("@")) {
       emailCheck();
     }
   });
 
   $("#registerBtn").click(function() {
-    var inputUserame = $("#register-inputUserame").val().trim();
-    var inputEmail = $("#register-inputEmail").val().trim();
-    var inputPassword = $("#register-inputPassword").val().trim();
-    var inputConfirmPassword = $("#register-inputConfirmPassword").val().trim();
+    var inputUserame = $("#register-inputUserame")
+      .val()
+      .trim();
+    var inputEmail = $("#register-inputEmail")
+      .val()
+      .trim();
+    var inputPassword = $("#register-inputPassword")
+      .val()
+      .trim();
+    var inputConfirmPassword = $("#register-inputConfirmPassword")
+      .val()
+      .trim();
     if (inputUserame.length == "") {
       alert("아이디를 입력해주세요.");
     } else if (notIdCheck) {
@@ -50,7 +62,9 @@ $(document).ready(function() {
   });
 
   function idCheck() {
-    var inputUserame = $("#register-inputUserame").val().trim();
+    var inputUserame = $("#register-inputUserame")
+      .val()
+      .trim();
     if (inputUserame.length == 0) {
       $("#id-check").css("color", "red");
       $("#id-check").html("아이디를 입력해주세요.");
@@ -77,7 +91,9 @@ $(document).ready(function() {
   }
 
   function emailCheck() {
-    var inputEmail = $("#register-inputEmail").val().trim();
+    var inputEmail = $("#register-inputEmail")
+      .val()
+      .trim();
     if (inputEmail.length == 0) {
       $("#email-check").css("color", "red");
       $("#email-check").html("이메일을 입력해주세요.");
