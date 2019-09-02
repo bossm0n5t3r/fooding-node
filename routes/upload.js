@@ -15,10 +15,19 @@ fs.readdir("uploads", error => {
   }
 });
 
-const upload = multer({
+fs.readdir("uploads/profiles", error => {
+  if (error) {
+    console.error(
+      "uploads/profiles 폴더가 없어 uploads/profiles 폴더를 생성합니다."
+    );
+    fs.mkdirSync("uploads/profiles");
+  }
+});
+
+const uploadProfile = multer({
   storage: multer.diskStorage({
     destination(req, file, cb) {
-      cb(null, "uploads/");
+      cb(null, "uploads/profiles");
     },
     filename(req, file, cb) {
       const ext = path.extname(file.originalname);
@@ -28,9 +37,40 @@ const upload = multer({
   limits: { fileSize: 5 * 1024 * 1024 }
 });
 
-router.post("/profile", isLoggedIn, upload.single("avatar"), (req, res) => {
-  console.log(req.file);
-  console.log(req.body);
-});
+router.post(
+  "/profile",
+  isLoggedIn,
+  uploadProfile.single("avatar"),
+  async (req, res, next) => {
+    const { user_password } = req.body;
+    try {
+      if (!req.file) {
+        await User.update(
+          {
+            user_password
+          },
+          {
+            where: { id: req.user.id }
+          }
+        );
+      } else {
+        await User.update(
+          {
+            user_password,
+            user_img: req.file.path
+          },
+          {
+            where: { id: req.user.id }
+          }
+        );
+      }
+      req.flash("profileMsg", "프로필이 수정되었습니다.");
+      return res.redirect("/profile");
+    } catch (error) {
+      console.error(error);
+      return next(error);
+    }
+  }
+);
 
 module.exports = router;
