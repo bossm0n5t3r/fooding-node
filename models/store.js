@@ -8,10 +8,6 @@ module.exports = (sequelize, DataTypes) => (
       type: DataTypes.STRING(300),
       allowNull: false,
     },
-    store_zipcode: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
-    },
     store_start_time: {
       type: DataTypes.STRING(100),
       allowNull: false,
