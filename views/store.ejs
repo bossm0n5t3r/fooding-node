@@ -4,6 +4,13 @@
     <%- include('header') %>
   </head>
   <body>
+    <!-- Alert -->
+    <% if (storeMsg.length > 0) { %>
+      <div class="alert alert-success alert-dismissible fade show text-center">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= storeMsg %>
+      </div>
+    <% } %>
     <!-- Navigation -->
     <%- include('navbar-user') %>
     <!-- Main -->
@@ -13,7 +20,7 @@
           <!-- 가게 이름 카드 -->
           <div class="card store-card-top">
             <div class="card-body">
-              <h1 class="card-title my-1 text-center">가게 이름</h1>
+              <h1 class="card-title my-1 text-center"><%= store.store_name %></h1>
             </div>
           </div>
           <!-- 가게 이름 카드 -->
@@ -30,8 +37,8 @@
                   </span>
                 </h4>
                 <div class="location-detail ml-3">
-                  <span class="txt-common">주소</span>
-                  <span>지번</span>
+                  <span class="txt-common"><strong>주소</strong></span>
+                  <span><%= store.store_address %></span>
                 </div>
               </div>
               <!-- 영업시간 -->
@@ -42,8 +49,8 @@
                   </span>
                 </h4>
                 <div class="location-detail ml-3">
-                  <span class="txt-common">영업시간</span>
-                  <span>영업 시작 시간 ~ 영업 종료 시간</span>
+                  <span class="txt-common"><strong>영업시간</strong></span>
+                  <span><%= store.store_start_time %> ~ <%= store.store_end_time %></span>
                 </div>
               </div>
               <!-- 메뉴 테이블 -->
@@ -56,12 +63,12 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>메뉴 이름1</td>
-                    <td>메뉴 가격1</td>
+                    <td><%= store.store_menu_1 %></td>
+                    <td><%= store.store_price_1 %></td>
                   </tr>
                   <tr>
-                    <td>메뉴 이름1</td>
-                    <td>메뉴 가격1</td>
+                    <td><%= store.store_menu_2 %></td>
+                    <td><%= store.store_price_2 %></td>
                   </tr>
                 </tbody>
               </table>
@@ -73,8 +80,8 @@
                   </span>
                 </h4>
                 <div class="location-detail ml-3">
-                  <span class="txt-common">업데이트</span>
-                  <span>2019.08.20</span>
+                  <span class="txt-common"><strong>업데이트</strong></span>
+                  <span><%= store.updatedAt %></span>
                 </div>
               </div>
             </div>
@@ -90,67 +97,27 @@
                   <hr class="mb-4">
                 
                   <div class="row text-center text-lg-left">
-                
+                    <% if (store.store_img_1) { %>
                     <div class="col-lg-3 col-md-4 col-6">
-                      <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/pWkk7iiCoDM/400x300" alt="">
-                          </a>
+                      <a href="<%= store.store_img_1 %>" class="d-block mb-4 h-100" target="_blank">
+                        <img class="img-fluid img-thumbnail" src="<%= store.store_img_1 %>" alt="">
+                      </a>
                     </div>
+                    <% } %>
+                    <% if (store.store_img_2) { %>
                     <div class="col-lg-3 col-md-4 col-6">
-                      <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">
-                          </a>
+                      <a href="<%= store.store_img_2 %>" class="d-block mb-4 h-100" target="_blank">
+                        <img class="img-fluid img-thumbnail" src="<%= store.store_img_2 %>" alt="">
+                      </a>
                     </div>
+                    <% } %>
+                    <% if (store.store_img_3) { %>
                     <div class="col-lg-3 col-md-4 col-6">
-                      <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/EUfxH-pze7s/400x300" alt="">
-                          </a>
+                      <a href="<%= store.store_img_3 %>" class="d-block mb-4 h-100" target="_blank">
+                        <img class="img-fluid img-thumbnail" src="<%= store.store_img_3 %>" alt="">
+                      </a>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                      <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/M185_qYH8vg/400x300" alt="">
-                          </a>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                      <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/sesveuG_rNo/400x300" alt="">
-                          </a>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                      <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/AvhMzHwiE_0/400x300" alt="">
-                          </a>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                      <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/2gYsZUmockw/400x300" alt="">
-                          </a>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                      <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/EMSDtjVHdQ8/400x300" alt="">
-                          </a>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                      <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/8mUEy0ABdNE/400x300" alt="">
-                          </a>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                      <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/G9Rfc1qccH4/400x300" alt="">
-                          </a>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                      <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/aJeH0KcFkuc/400x300" alt="">
-                          </a>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                      <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/p2TQ-3Bh3Oo/400x300" alt="">
-                          </a>
-                    </div>
+                    <% } %>
                   </div>
                 
                 </div>
