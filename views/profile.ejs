@@ -69,8 +69,9 @@
                       <strong>가게이름</strong>
                     </div>
                     <div class="store-register-value">
-                      <% if (user.user_hasStore) { %>
-                        <a href="/store-modify"><span>가게이름 1</span></a>
+                      <input type="hidden" id="user-storeId" value="<%= user.user_storeId %>"/>
+                      <% if (user.user_storeId > 0) { %>
+                        <a href="/store/?id=<%= user.user_storeId %>"><span id="storeName"></span></a>
                       <% } else { %>
                         <a href="/store-register"><span>등록된 가게가 없습니다. 만드실래요?</span></a>
                       <% } %>
