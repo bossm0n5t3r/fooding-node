@@ -1,4 +1,5 @@
 const express = require("express");
+const { Store } = require("../models");
 const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
 
 const router = express.Router();
@@ -37,12 +38,21 @@ router.get("/main", isLoggedIn, (req, res, next) => {
   });
 });
 
-router.get("/store", isLoggedIn, (req, res, next) => {
-  res.render("store", {
-    title: "가게 화면 - Fooding",
-    user: req.user,
-    storeMsg: req.flash("storeMsg")
-  });
+router.get("/store", isLoggedIn, async (req, res, next) => {
+  try {
+    const exStore = await Store.find({ where: { id: req.query.id } });
+    if (exStore) {
+      res.render("store", {
+        title: "가게 화면 - Fooding",
+        user: req.user,
+        store: exStore,
+        storeMsg: req.flash("storeMsg")
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 });
 
 router.get("/store-register", isLoggedIn, (req, res, next) => {
