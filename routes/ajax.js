@@ -1,5 +1,5 @@
 const express = require("express");
-const { User } = require("../models");
+const { User, Store } = require("../models");
 
 const router = express.Router();
 
@@ -27,6 +27,19 @@ router.post("/email-check", async (req, res, next) => {
       result = 0;
     }
     return res.send({ result: result });
+  } catch (error) {
+    console.error(error);
+    return next(error);
+  }
+});
+
+router.post("/get-store-name", async (req, res, next) => {
+  const { id } = req.body;
+  try {
+    const exStore = await Store.find({ where: { id } });
+    if (exStore) {
+      return res.send({ result: exStore.store_name });
+    }
   } catch (error) {
     console.error(error);
     return next(error);
