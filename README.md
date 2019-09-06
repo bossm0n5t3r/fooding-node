@@ -8,6 +8,12 @@
 > * Set config/config-sample.json file to your database
 > * Rename config/config-sample.json to **config/config.json**
 
+> ### Windows 10
+> ```sh
+> # Start database service
+> $ net start (your database service name)
+> ```
+
 ```sh
 $ npm i
 $ npm i -g sequlize-cli
