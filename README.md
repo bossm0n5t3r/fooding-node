@@ -5,6 +5,7 @@
 > ### Prerequisite
 > * MySQL
 > * .env file
+>   * Set .env-sample file and Rename to **.env**
 > * Set config/config-sample.json file to your database
 > * Rename config/config-sample.json to **config/config.json**
 
@@ -15,6 +16,7 @@
 > ```
 
 ```sh
+# Start database service
 $ npm i
 $ npm i -g sequlize-cli
 $ sequelize db:create
