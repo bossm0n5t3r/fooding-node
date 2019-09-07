@@ -6,8 +6,9 @@
 > * MySQL
 > * .env file
 >   * Set .env-sample file and Rename to **.env**
-> * Set config/config-sample.json file to your database
-> * Rename config/config-sample.json to **config/config.json**
+> * config/config.json
+>   * Set config/config-sample.json file to your database
+>   * Rename config/config-sample.json to **config/config.json**
 
 > ### Windows 10
 > ```sh
