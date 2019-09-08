@@ -96,7 +96,7 @@ const uploadStores = multer({
 });
 
 router.post(
-  "/store",
+  "/store-register",
   isLoggedIn,
   uploadStores.array("store_img"),
   async (req, res, next) => {
@@ -181,6 +181,91 @@ router.post(
       );
       req.flash("storeMsg", "가게가 등록되었습니다!");
       return res.redirect("/store/?id=" + storeId.id);
+    } catch (error) {
+      console.error(error);
+      return next(error);
+    }
+  }
+);
+
+router.post(
+  "/store-modify",
+  isLoggedIn,
+  uploadStores.array("store_img"),
+  async (req, res, next) => {
+    const {
+      store_name,
+      store_address,
+      store_start_time,
+      store_end_time,
+      store_menu_1,
+      store_price_1,
+      store_menu_2,
+      store_price_2
+    } = req.body;
+    try {
+      const exStore = await Store.find({ where: { userId: req.user.id } });
+      if (exStore) {
+        await Store.update({
+          store_name,
+          store_address,
+          store_start_time,
+          store_end_time,
+          store_menu_1,
+          store_price_1,
+          store_menu_2,
+          store_price_2,
+          userId: req.user.id
+        }, {
+          where: {
+            userId: req.user.id
+          }
+        });
+        for (var i = 0; i < req.files.length; i++) {
+          if (i === 0) {
+            await Store.update(
+              {
+                store_img_1: req.files[i].path
+              },
+              {
+                where: {
+                  userId: req.user.id
+                }
+              }
+            );
+          } else if (i == 1) {
+            await Store.update(
+              {
+                store_img_2: req.files[i].path
+              },
+              {
+                where: {
+                  userId: req.user.id
+                }
+              }
+            );
+          } else {
+            await Store.update(
+              {
+                store_img_3: req.files[i].path
+              },
+              {
+                where: {
+                  userId: req.user.id
+                }
+              }
+            );
+          }
+        }
+        const storeId = await Store.find({
+          attributes: ["id"],
+          where: {
+            userId: req.user.id
+          }
+        });
+        req.flash("storeMsg", "가게 정보가 수정되었습니다!");
+        return res.redirect("/store/?id=" + storeId.id);
+      }
     } catch (error) {
       console.error(error);
       return next(error);

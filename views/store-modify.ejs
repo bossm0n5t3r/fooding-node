@@ -2,118 +2,126 @@
 <html>
   <head>
     <%- include('header') %>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=<%= appkey %>&libraries=services,clusterer,drawing"></script>
+    <script src="/js/store.js"></script>
   </head>
   <body>
     <!-- Navigation -->
     <%- include('navbar-user') %>
     <!-- Main -->
     <div class="container-fluid">
-      <div class="row card-columns store-bg-color div-full-min-height">
+      <div class="row card-columns store-bg-color">
         <div class="store-card-width mx-auto">
           <!-- 가게 수정 카드 -->
-          <div class="card store-card-top">
-            <div class="card-body mx-5">
-              <h1 class="card-title text-center">가게 수정</h1>
-              <hr/>
-              <div class="store-register-area">
-                <div class="store-register-container mb-4">
-                  <div class="store-register-key text-center my-auto">
-                    <strong>상호명</strong>
+          <form method="POST" id="store-modify" enctype="multipart/form-data" action="/upload/store-modify">
+            <div class="card store-card-top">
+              <div class="card-body mx-5">
+                <h1 class="card-title text-center">가게 수정</h1>
+                <hr/>
+                <div class="store-register-area">
+                  <div class="store-register-container mb-4">
+                    <div class="store-register-key text-center my-auto">
+                      <strong>상호명</strong>
+                    </div>
+                    <div class="store-register-value">
+                      <input type="text" class="form-control" id="store-name" name="store_name" value="<%= store.store_name %>">
+                    </div>
                   </div>
-                  <div class="store-register-value">
-                    <input type="text" class="form-control">
+                  <div class="store-register-container mb-4">
+                    <div class="store-register-key text-center my-auto">
+                      <strong>주소</strong>
+                    </div>
+                    <div class="input-group store-register-value">
+                      <input type="text" class="form-control" id="store-address" name="store_address" value="<%= store.store_address %>" readonly>
+                      <div class="input-group-append">
+                        <button type="button" class="btn btn-success float-left" id="address-btn">우편번호검색</button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="store-register-container mb-4">
-                  <div class="store-register-key text-center my-auto">
-                    <strong>주소</strong>
+                  <div class="store-register-container mb-4">
+                    <div class="store-register-key text-center my-auto">
+                      <strong>영업시간</strong>
+                    </div>
+                    <div class="store-register-value">
+                      <input type="text" class="form-control store-register-start-time" id="store-start-time" name="store_start_time" value="<%= store.store_start_time %>">
+                    </div>
+                    <span class="my-auto mx-2">
+                      <strong>~</strong>
+                    </span>
+                    <div class="store-register-value">
+                      <input type="text" class="form-control store-register-end-time" id="store-end-time" name="store_end_time" value="<%= store.store_end_time %>">
+                    </div>
                   </div>
-                  <div class="input-group store-register-value">
-                    <input type="text" class="form-control">
-                    <div class="input-group-append">
-                      <button type="button" class="btn btn-success float-left">우편번호검색</button>
+                  <div class="store-register-container mx-4">
+                    <table class="table text-center">
+                      <thead>
+                        <tr>
+                          <th>메뉴이름</th>
+                          <th>가격</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><input type="text" class="form-control" id="store-menu-1" name="store_menu_1" value="<%= store.store_menu_1 %>"></td>
+                          <td><input type="text" class="form-control" id="store-price-1" name="store_price_1" value="<%= store.store_price_1 %>"></td>
+                        </tr>
+                        <tr>
+                          <td><input type="text" class="form-control" id="store-menu-2" name="store_menu_2" value="<%= store.store_menu_2 %>"></td>
+                          <td><input type="text" class="form-control" id="store-price-2" name="store_price_2" value="<%= store.store_price_2 %>"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="text-center mb-4">
+                    <strong>사진은 자동적으로 정렬된 뒤 저장됩니다.</strong>
+                  </div>
+                  <div class="store-register-container mb-4">
+                    <div class="store-register-key text-center my-auto">
+                      <strong>가게 사진 1</strong>
+                    </div>
+                    <div class="input-group store-register-value">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="store-img-1" name="store_img" accept="image/*">
+                        <label class="custom-file-label" for="store-img-1">업로드 시 자동으로 변경됩니다.</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="store-register-container mb-4">
+                    <div class="store-register-key text-center my-auto">
+                      <strong>가게 사진 2</strong>
+                    </div>
+                    <div class="input-group store-register-value">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="store-img-2" name="store_img" accept="image/*">
+                        <label class="custom-file-label" for="store-img-2">업로드 시 자동으로 변경됩니다.</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="store-register-container mb-4">
+                    <div class="store-register-key text-center my-auto">
+                      <strong>가게 사진 3</strong>
+                    </div>
+                    <div class="input-group store-register-value">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="store-img-3" name="store_img" accept="image/*">
+                        <label class="custom-file-label" for="store-img-3">업로드 시 자동으로 변경됩니다.</label>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="store-register-container mb-4">
-                  <div class="store-register-key text-center my-auto">
-                    <strong>영업시간</strong>
-                  </div>
-                  <div class="store-register-value">
-                    <input type="text" class="form-control store-register-start-time" placeholder="ex) 13:00">
-                  </div>
-                  <span class="my-auto mx-2">
-                    <strong>~</strong>
-                  </span>
-                  <div class="store-register-value">
-                    <input type="text" class="form-control store-register-end-time" placeholder="ex) 22:00">
-                  </div>
-                </div>
-                <div class="store-register-container mx-4">
-                  <table class="table text-center">
-                    <thead>
-                      <tr>
-                        <th>메뉴이름</th>
-                        <th>가격</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td><input type="text" class="form-control" placeholder="메뉴 이름 1"></td>
-                        <td><input type="text" class="form-control" placeholder="메뉴 가격 1"></td>
-                      </tr>
-                      <tr>
-                        <td><input type="text" class="form-control" placeholder="메뉴 이름 2"></td>
-                        <td><input type="text" class="form-control" placeholder="메뉴 가격 2"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="store-register-container mb-4">
-                  <div class="store-register-key text-center my-auto">
-                    <strong>가게 사진 1</strong>
-                  </div>
-                  <div class="input-group store-register-value">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFile" accept="image/*">
-                      <label class="custom-file-label" for="customFile">업로드 시 자동으로 변경됩니다.</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="store-register-container mb-4">
-                  <div class="store-register-key text-center my-auto">
-                    <strong>가게 사진 2</strong>
-                  </div>
-                  <div class="input-group store-register-value">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFile" accept="image/*">
-                      <label class="custom-file-label" for="customFile">업로드 시 자동으로 변경됩니다.</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="store-register-container mb-4">
-                  <div class="store-register-key text-center my-auto">
-                    <strong>가게 사진 3</strong>
-                  </div>
-                  <div class="input-group store-register-value">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFile" accept="image/*">
-                      <label class="custom-file-label" for="customFile">업로드 시 자동으로 변경됩니다.</label>
-                    </div>
-                  </div>
-                </div>
+                <button type="button" class="btn btn-danger float-left my-4 ml-4" id="main-back-btn">돌아가기</button>
+                <button type="button" class="btn btn-primary float-right my-4 mr-4" id="store-modify-btn">수정하기</button>
               </div>
-              <a href="/main"><button type="button" class="btn btn-danger float-left mb-4 ml-4">돌아가기</button></a>
-              <button type="button" class="btn btn-primary float-right mb-4 mr-4">수정하기</button>
             </div>
-          </div>
+          </form>
           <!-- 가게 수정 카드 -->
         </div>
       </div>
     </div>
     <!-- Main -->
     <!-- footer -->
-    <%- include('footer') %>
+    <%- include('footer-not-fixed-bottom') %>
   </body>
   <script>
     // Add the following code if you want the name of the file appear on select

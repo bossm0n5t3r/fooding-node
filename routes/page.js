@@ -64,11 +64,21 @@ router.get("/store-register", isLoggedIn, (req, res, next) => {
   });
 });
 
-router.get("/store-modify", isLoggedIn, (req, res, next) => {
-  res.render("store-modify", {
-    title: "가게 수정 화면 - Fooding",
-    user: req.user
-  });
+router.get("/store-modify", isLoggedIn, async (req, res, next) => {
+  try {
+    const exStore = await Store.find({ where: { id: req.query.id } });
+    if (exStore) {
+      res.render("store-modify", {
+        title: "가게 수정 화면 - Fooding",
+        user: req.user,
+        store: exStore,
+        appkey: process.env.KAKAO_JS
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 });
 
 router.get("/profile", isLoggedIn, (req, res, next) => {

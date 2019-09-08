@@ -72,7 +72,10 @@
                       <input type="hidden" id="user-storeId" value="<%= user.user_storeId %>"/>
                       <% if (user.user_storeId > 0) { %>
                         <a href="/store/?id=<%= user.user_storeId %>"><span class="align-middle" id="storeName"></span></a>
-                        <button type="button" class="btn btn-danger btn-sm float-right" id="store-delete-btn">가게삭제</button>
+                        <div class="btn-group float-right">
+                          <a href="/store-modify/?id=<%= user.user_storeId %>"><button type="button" class="btn btn-info btn-sm">가게수정</button></a>
+                          <button type="button" class="btn btn-danger btn-sm" id="store-delete-btn">가게삭제</button>
+                        </div>
                       <% } else { %>
                         <a href="/store-register"><span>등록된 가게가 없습니다. 만드실래요?</span></a>
                       <% } %>
