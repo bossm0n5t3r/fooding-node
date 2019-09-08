@@ -71,7 +71,8 @@
                     <div class="store-register-value">
                       <input type="hidden" id="user-storeId" value="<%= user.user_storeId %>"/>
                       <% if (user.user_storeId > 0) { %>
-                        <a href="/store/?id=<%= user.user_storeId %>"><span id="storeName"></span></a>
+                        <a href="/store/?id=<%= user.user_storeId %>"><span class="align-middle" id="storeName"></span></a>
+                        <button type="button" class="btn btn-danger btn-sm float-right" id="store-delete-btn">가게삭제</button>
                       <% } else { %>
                         <a href="/store-register"><span>등록된 가게가 없습니다. 만드실래요?</span></a>
                       <% } %>

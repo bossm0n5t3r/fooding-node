@@ -24,6 +24,28 @@ $(document).ready(function() {
     }
   });
 
+  $("#store-delete-btn").click(function() {
+    var confirmCheck = confirm(
+      "정말 가게를 삭제하시겠습니까? 삭제되면 복구되지 않습니다."
+    );
+    if (confirmCheck) {
+      var storeId = $("#user-storeId")
+        .val()
+        .trim();
+      $.post(
+        "/ajax/store-delete",
+        { id: storeId },
+        function(msg) {
+          if (msg.result == 1) {
+            alert("가게가 삭제되었습니다!");
+            location.reload();
+          }
+        },
+        "json"
+      );
+    }
+  });
+
   function getStoreName() {
     var storeId = $("#user-storeId")
       .val()

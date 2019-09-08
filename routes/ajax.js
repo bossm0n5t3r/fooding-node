@@ -46,4 +46,25 @@ router.post("/get-store-name", async (req, res, next) => {
   }
 });
 
+router.post("/store-delete", async (req, res, next) => {
+  const { id } = req.body;
+  try {
+    const deleteStore = await Store.destroy({ where: { id } });
+    if (deleteStore) {
+      await User.update(
+        {
+          user_storeId: 0
+        },
+        {
+          where: { id: req.user.id }
+        }
+      );
+      return res.send({ result: 1 });
+    }
+  } catch (error) {
+    console.error(error);
+    return next(error);
+  }
+});
+
 module.exports = router;
