@@ -34,7 +34,8 @@ router.get("/main", isLoggedIn, (req, res, next) => {
   res.render("main", {
     title: "메인 화면 - Fooding",
     user: req.user,
-    appkey: process.env.KAKAO_JS
+    appkey: process.env.KAKAO_JS,
+    mainMsg: req.flash("mainMsg")
   });
 });
 
@@ -67,13 +68,17 @@ router.get("/store-register", isLoggedIn, (req, res, next) => {
 router.get("/store-modify", isLoggedIn, async (req, res, next) => {
   try {
     const exStore = await Store.find({ where: { id: req.query.id } });
-    if (exStore) {
+    const userStore = await Store.find({ where: { userId: req.user.id } });
+    if (exStore.id == userStore.id) {
       res.render("store-modify", {
         title: "가게 수정 화면 - Fooding",
         user: req.user,
         store: exStore,
         appkey: process.env.KAKAO_JS
       });
+    } else {
+      req.flash("mainMsg", "본인의 가게가 아니라 수정할 수 없습니다.");
+      return res.redirect("/main");
     }
   } catch (error) {
     console.error(error);
