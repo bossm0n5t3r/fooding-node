@@ -47,9 +47,7 @@ $(document).ready(function() {
   });
 
   function getStoreName() {
-    var storeId = $("#user-storeId")
-      .val()
-      .trim();
+    var storeId = $("#data-set").data("storeId");
     if (parseInt(storeId) > 0) {
       $.post(
         "/ajax/get-store-name",
