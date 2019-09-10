@@ -1,5 +1,7 @@
 # fooding-node
 
+길거리 음식 검색 사이트
+
 ## How to use
 
 > ### Prerequisite
