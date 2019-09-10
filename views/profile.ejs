@@ -16,6 +16,7 @@
     <!-- Navigation -->
     <%- include('navbar-user') %>
     <!-- Main -->
+    <div id="data-set" data-store-id="<%= user.user_storeId %>"></div>
     <div class="container-fluid">
       <div class="row card-columns store-bg-color div-full-min-height">
         <div class="store-card-width mx-auto">
@@ -69,7 +70,6 @@
                       <strong>가게이름</strong>
                     </div>
                     <div class="store-register-value">
-                      <input type="hidden" id="user-storeId" value="<%= user.user_storeId %>"/>
                       <% if (user.user_storeId > 0) { %>
                         <a href="/store/?id=<%= user.user_storeId %>"><span class="align-middle" id="storeName"></span></a>
                         <div class="btn-group float-right">
