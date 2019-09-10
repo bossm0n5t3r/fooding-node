@@ -1,5 +1,5 @@
 const express = require("express");
-const { User, Store } = require("../models");
+const { User, Store, StoreReview } = require("../models");
 
 const router = express.Router();
 
@@ -61,6 +61,21 @@ router.post("/store-delete", async (req, res, next) => {
       );
       return res.send({ result: 1 });
     }
+  } catch (error) {
+    console.error(error);
+    return next(error);
+  }
+});
+
+router.post("/add-comment", async (req, res, next) => {
+  const { comment, storeId } = req.body;
+  try {
+    await StoreReview.create({
+      store_review_comment: comment,
+      userId: req.user.id,
+      storeId: storeId
+    });
+    return res.send({ result: 1 });
   } catch (error) {
     console.error(error);
     return next(error);
