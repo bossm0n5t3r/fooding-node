@@ -170,7 +170,6 @@ $(document).ready(function() {
       dataType: "json",
       data: { id: storeId },
       success: function(msg) {
-        console.log({ comments: msg.comments });
         var count = msg.comments.count;
         $("#count-comments").text("댓글 " + count + "개");
         $(".store-comment-area").empty();
