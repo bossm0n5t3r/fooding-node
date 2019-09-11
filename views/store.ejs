@@ -2,6 +2,7 @@
 <html>
   <head>
     <%- include('header') %>
+    <script src="/js/store.js"></script>
   </head>
   <body>
     <!-- Alert -->
@@ -14,6 +15,7 @@
     <!-- Navigation -->
     <%- include('navbar-user') %>
     <!-- Main -->
+    <div id="data-set" data-user-id="<%= user.id %>" data-store-id="<%= store.id %>"></div>
     <div class="container-fluid">
       <div class="row card-columns store-bg-color">
         <div class="store-card-width mx-auto">
@@ -96,30 +98,40 @@
                 
                   <hr class="mb-4">
                 
+                  <%
+                    var img_1 = store.store_img_1
+                    var img_2 = store.store_img_2
+                    var img_3 = store.store_img_3
+                  %>
+                  <% if (img_1 == null && img_2 == null && img_3 == null) { %>
+                  <div class="text-center">
+                    등록된 사진이 없습니다.
+                  </div>
+                  <% } else { %>
                   <div class="row text-center text-lg-left">
-                    <% if (store.store_img_1) { %>
+                    <% if (img_1) { %>
                     <div class="col-lg-3 col-md-4 col-6">
-                      <a href="<%= store.store_img_1 %>" class="d-block mb-4 h-100" target="_blank">
-                        <img class="img-fluid img-thumbnail" src="<%= store.store_img_1 %>" alt="">
+                      <a href="<%= img_1 %>" class="d-block mb-4 h-100" target="_blank">
+                        <img class="img-fluid img-thumbnail" src="<%= img_1 %>" alt="">
                       </a>
                     </div>
                     <% } %>
-                    <% if (store.store_img_2) { %>
+                    <% if (img_2) { %>
                     <div class="col-lg-3 col-md-4 col-6">
-                      <a href="<%= store.store_img_2 %>" class="d-block mb-4 h-100" target="_blank">
-                        <img class="img-fluid img-thumbnail" src="<%= store.store_img_2 %>" alt="">
+                      <a href="<%= img_2 %>" class="d-block mb-4 h-100" target="_blank">
+                        <img class="img-fluid img-thumbnail" src="<%= img_2 %>" alt="">
                       </a>
                     </div>
                     <% } %>
-                    <% if (store.store_img_3) { %>
+                    <% if (img_3) { %>
                     <div class="col-lg-3 col-md-4 col-6">
-                      <a href="<%= store.store_img_3 %>" class="d-block mb-4 h-100" target="_blank">
-                        <img class="img-fluid img-thumbnail" src="<%= store.store_img_3 %>" alt="">
+                      <a href="<%= img_3 %>" class="d-block mb-4 h-100" target="_blank">
+                        <img class="img-fluid img-thumbnail" src="<%= img_3 %>" alt="">
                       </a>
                     </div>
                     <% } %>
                   </div>
-                
+                  <% } %>
                 </div>
             </div>
           </div>
@@ -128,51 +140,19 @@
           <div class="card">
             <div class="card-body store-card-detail mx-5">
               <div class="store-comment-container">
-                <h4>댓글 3개</h4>
+                <h4 id="count-comments"></h4>
                 <hr/>
                 <div class="store-comment-write-area">
-                  <img src="/img/profile/profile_image.jpg" class="store-comment-user-img">
+                  <img src="<%= user.user_img %>" class="store-comment-user-img">
                   <div class="input-group mb-3 store-comment-write-box">
-                    <input type="text" class="form-control" placeholder="댓글을 입력하세요...">
+                    <input type="text" class="form-control" id="store-comment" placeholder="댓글을 입력하세요...">
                     <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">등록</button> 
+                      <button type="button" class="btn btn-primary" id="add-comment">등록</button> 
                     </div>
                   </div>
                 </div>
                 <hr class="mt-0">
-                <div class="store-comment-area">
-                  <div class="store-comment mb-3">
-                    <div class="my-auto">
-                      <img src="/img/profile/profile_image.jpg" class="store-comment-user-img">
-                    </div>
-                    <div class="store-comment-container">
-                      <strong>아이디</strong>
-                      <p class="store-comment-desc">여기 정말 맛집이네요~</p>
-                    </div>
-                  </div>
-                  <div class="store-comment mb-3">
-                    <div class="my-auto">
-                      <img src="/img/profile/profile_image.jpg" class="store-comment-user-img">
-                    </div>
-                    <div class="store-comment-container">
-                      <strong>아이디</strong>
-                      <p class="store-comment-desc">여기 정말 맛집이네요~</p>
-                      <div class="my-auto text-danger">
-                        <a class="store-comment-modify">수정</a>
-                        <a class="store-comment-delete">삭제</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="store-comment mb-3">
-                    <div class="my-auto">
-                      <img src="/img/profile/profile_image.jpg" class="store-comment-user-img">
-                    </div>
-                    <div class="store-comment-container">
-                      <strong>아이디</strong>
-                      <p class="store-comment-desc">여기 정말 맛집이네요~</p>
-                    </div>
-                  </div>
-                </div>
+                <div class="store-comment-area"></div>
               </div>
             </div>
           </div>
