@@ -30,17 +30,18 @@ $(document).ready(function() {
     );
     if (confirmCheck) {
       var storeId = $("#data-set").data("storeId");
-      $.post(
-        "/ajax/store-delete",
-        { id: storeId },
-        function(msg) {
+      $.ajax({
+        type: "GET",
+        url: "/ajax/store-delete",
+        dataType: "json",
+        data: { id: storeId },
+        success: function(msg) {
           if (msg.result == 1) {
             alert("가게가 삭제되었습니다!");
             getStoreName();
           }
-        },
-        "json"
-      );
+        }
+      });
     }
   });
 
@@ -51,7 +52,6 @@ $(document).ready(function() {
       url: "/ajax/get-store-name",
       dataType: "json",
       success: function(msg) {
-        console.log(msg)
         if (msg.result) {
           $("#store-name").empty();
           var storeName =

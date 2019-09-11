@@ -47,10 +47,9 @@ router.get("/get-store-name", async (req, res, next) => {
   }
 });
 
-router.post("/store-delete", async (req, res, next) => {
-  const { id } = req.body;
+router.get("/store-delete", async (req, res, next) => {
   try {
-    const deleteStore = await Store.destroy({ where: { id } });
+    const deleteStore = await Store.destroy({ where: { id: req.query.id } });
     if (deleteStore) {
       await User.update(
         {
