@@ -69,10 +69,12 @@ $(document).ready(function() {
       $("#id-check").css("color", "red");
       $("#id-check").html("아이디를 입력해주세요.");
     } else {
-      $.post(
-        "/ajax/id-check",
-        { user_name: inputUserame },
-        function(msg) {
+      $.ajax({
+        type: "POST",
+        url: "/ajax/id-check",
+        dataType: "json",
+        data: { user_name: inputUserame },
+        success: function(msg) {
           if (msg.result == 1) {
             $("#id-check").css("color", "");
             $("#id-check").html("");
@@ -84,9 +86,8 @@ $(document).ready(function() {
             );
             notIdCheck = true;
           }
-        },
-        "json"
-      );
+        }
+      });
     }
   }
 
@@ -98,10 +99,12 @@ $(document).ready(function() {
       $("#email-check").css("color", "red");
       $("#email-check").html("이메일을 입력해주세요.");
     } else {
-      $.post(
-        "/ajax/email-check",
-        { user_email: inputEmail },
-        function(msg) {
+      $.ajax({
+        type: "POST",
+        url: "/ajax/email-check",
+        dataType: "json",
+        data: { user_email: inputEmail },
+        success: function(msg) {
           if (msg.result == 1) {
             $("#email-check").css("color", "");
             $("#email-check").html("");
@@ -111,9 +114,8 @@ $(document).ready(function() {
             $("#email-check").html("이미 가입된 이메일 입니다.");
             notEmailCheck = true;
           }
-        },
-        "json"
-      );
+        }
+      });
     }
   }
 });
