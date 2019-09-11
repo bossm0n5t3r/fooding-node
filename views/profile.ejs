@@ -69,17 +69,7 @@
                     <div class="store-register-key text-center my-auto">
                       <strong>가게이름</strong>
                     </div>
-                    <div class="store-register-value">
-                      <% if (user.user_storeId > 0) { %>
-                        <a href="/store/?id=<%= user.user_storeId %>"><span class="align-middle" id="storeName"></span></a>
-                        <div class="btn-group float-right">
-                          <a href="/store-modify/?id=<%= user.user_storeId %>"><button type="button" class="btn btn-info btn-sm">가게수정</button></a>
-                          <button type="button" class="btn btn-danger btn-sm" id="store-delete-btn">가게삭제</button>
-                        </div>
-                      <% } else { %>
-                        <a href="/store-register"><span>등록된 가게가 없습니다. 만드실래요?</span></a>
-                      <% } %>
-                    </div>
+                    <div id="store-name" class="store-register-value"></div>
                   </div>
                   <div class="profile-blank"></div>
                 </div>

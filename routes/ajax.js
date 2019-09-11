@@ -33,12 +33,13 @@ router.post("/email-check", async (req, res, next) => {
   }
 });
 
-router.post("/get-store-name", async (req, res, next) => {
-  const { id } = req.body;
+router.get("/get-store-name", async (req, res, next) => {
   try {
-    const exStore = await Store.find({ where: { id } });
+    const exStore = await Store.find({ where: { userId: req.user.id } });
     if (exStore) {
-      return res.send({ result: exStore.store_name });
+      return res.send({ result: 1, name: exStore.store_name });
+    } else {
+      return res.send({ result: 0 });
     }
   } catch (error) {
     console.error(error);
