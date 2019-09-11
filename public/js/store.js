@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  printComments();
+
   $("#main-back-btn").click(function() {
     let check = confirm(
       "메인 화면으로 돌아가면 입력된 모든 내용은 취소되고, 지워집니다. 메인화면으로 돌아가시겠습니까?"
@@ -117,4 +119,92 @@ $(document).ready(function() {
       $("#store-modify").submit();
     }
   });
+
+  $("#add-comment").click(function() {
+    var comment = $("#store-comment")
+      .val()
+      .trim();
+    if (comment.length > 0) {
+      var storeId = $("#data-set").data("storeId");
+      addComment(comment, storeId);
+    } else {
+      alert("댓글이 없습니다! 댓글을 입력해주세요!");
+    }
+  });
+
+  $("#store-comment").keyup(function(e) {
+    if (e.keyCode == 13) {
+      var comment = $("#store-comment")
+        .val()
+        .trim();
+      if (comment.length > 0) {
+        var storeId = $("#data-set").data("storeId");
+        addComment(comment, storeId);
+      } else {
+        alert("댓글이 없습니다! 댓글을 입력해주세요!");
+      }
+    }
+  });
+
+  function addComment(comment, storeId) {
+    $.ajax({
+      type: "POST",
+      url: "/ajax/add-comment",
+      dataType: "json",
+      data: { comment: comment, storeId: storeId },
+      success: function(msg) {
+        if (msg.result) {
+          $("#store-comment").val("");
+          printComments();
+        }
+      }
+    });
+  }
+
+  function printComments() {
+    var userId = $("#data-set").data("userId");
+    var storeId = $("#data-set").data("storeId");
+    $.ajax({
+      type: "GET",
+      url: "/ajax/get-all-comments",
+      dataType: "json",
+      data: { id: storeId },
+      success: function(msg) {
+        console.log({ comments: msg.comments });
+        var count = msg.comments.count;
+        $("#count-comments").text("댓글 " + count + "개");
+        $(".store-comment-area").empty();
+        if (count > 0) {
+          $.each(msg.comments.rows, (i, item) => {
+            var comment =
+              '<div class="store-comment mb-3">\n' +
+              '<div class="my-auto">\n' +
+              '<img src="' +
+              item.user.user_img +
+              '" class="store-comment-user-img">\n' +
+              "</div>\n" +
+              '<div class="store-comment-container">\n' +
+              "<strong>" +
+              item.user.user_name +
+              "</strong>\n" +
+              '<p class="store-comment-desc">' +
+              item.store_review_comment +
+              "</p>\n";
+            if (item.user.id === userId) {
+              comment +=
+                '<div class="my-auto text-danger">\n' +
+                '<a class="store-comment-modify">수정</a>\n' +
+                '<a class="store-comment-delete">삭제</a>\n' +
+                "</div>";
+            }
+            comment += "</div>\n" + "</div>";
+            $(".store-comment-area").append(comment);
+          });
+        } else {
+          var commentEmpty = '<p class="mt-5 text-center">댓글이 없습니다.</p>';
+          $(".store-comment-area").append(commentEmpty);
+        }
+      }
+    });
+  }
 });
