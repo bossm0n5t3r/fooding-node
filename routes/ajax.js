@@ -14,7 +14,7 @@ router.post("/id-check", async (req, res, next) => {
     return res.send({ result: result });
   } catch (error) {
     console.error(error);
-    return next(error);
+    next(error);
   }
 });
 
@@ -29,7 +29,7 @@ router.post("/email-check", async (req, res, next) => {
     return res.send({ result: result });
   } catch (error) {
     console.error(error);
-    return next(error);
+    next(error);
   }
 });
 
@@ -43,7 +43,7 @@ router.get("/get-store-name", async (req, res, next) => {
     }
   } catch (error) {
     console.error(error);
-    return next(error);
+    next(error);
   }
 });
 
@@ -63,7 +63,7 @@ router.get("/store-delete", async (req, res, next) => {
     }
   } catch (error) {
     console.error(error);
-    return next(error);
+    next(error);
   }
 });
 
@@ -78,7 +78,21 @@ router.post("/add-comment", async (req, res, next) => {
     return res.send({ result: 1 });
   } catch (error) {
     console.error(error);
-    return next(error);
+    next(error);
+  }
+});
+
+router.get("/get-all-comments", async (req, res, next) => {
+  try {
+    const allComments = await StoreReview.findAndCountAll({
+      where: { storeId: req.query.id },
+      order: [["id", "ASC"]],
+      include: [User]
+    });
+    return res.send({ comments: allComments });
+  } catch (error) {
+    console.error(error);
+    next(error);
   }
 });
 
