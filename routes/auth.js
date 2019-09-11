@@ -58,7 +58,7 @@ router.post('/join-mail', isNotLoggedIn, async (req, res, next) => {
     return res.redirect('/');
   } catch (error) {
     console.error(error);
-    return next(error);
+    next(error);
   }
 });
 
@@ -85,7 +85,7 @@ router.get('/join', isNotLoggedIn, async (req, res, next) => {
     return res.redirect('/');
   } catch (error) {
     console.error(error);
-    return next(error);
+    next(error);
   }
 });
 

@@ -68,7 +68,7 @@ router.post(
       return res.redirect("/profile");
     } catch (error) {
       console.error(error);
-      return next(error);
+      next(error);
     }
   }
 );
@@ -183,7 +183,7 @@ router.post(
       return res.redirect("/store/?id=" + storeId.id);
     } catch (error) {
       console.error(error);
-      return next(error);
+      next(error);
     }
   }
 );
@@ -268,7 +268,7 @@ router.post(
       }
     } catch (error) {
       console.error(error);
-      return next(error);
+      next(error);
     }
   }
 );
