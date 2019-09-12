@@ -146,6 +146,73 @@ $(document).ready(function() {
     }
   });
 
+  $(".store-comment-area").on("click", ".store-comment-modify", function() {
+    var id = $(this).data("commentId");
+    var commentIdTag = "#comment-id-" + id;
+    var commentEditTag = "#comment-edit-" + id;
+    var beforeComment = $(commentIdTag).text();
+    $(commentIdTag).empty();
+    var commentModify =
+      '<input type="text" class="form-control" id="comment-modify-text-' +
+      id +
+      '" value="' +
+      beforeComment +
+      '">\n';
+    $(commentIdTag).append(commentModify);
+    $(commentEditTag).empty();
+    var commentEdit =
+      '<a class="store-comment-modify-save" data-comment-id="' +
+      id +
+      '">저장</a>\n' +
+      '<a class="store-comment-modify-cancel" data-comment-id="' +
+      id +
+      '">취소</a>\n';
+    $(commentEditTag).append(commentEdit);
+  });
+
+  $(".store-comment-area").on(
+    "click",
+    ".store-comment-modify-save",
+    function() {
+      var id = $(this).data("commentId");
+      var commentTextTag = "#comment-modify-text-" + id;
+      var afterComment = $(commentTextTag).val();
+      $.ajax({
+        type: "POST",
+        url: "/ajax/update-comment",
+        dataType: "json",
+        data: { commentId: id, comment: afterComment },
+        success: function(msg) {
+          if (msg.result) {
+            printComments();
+          }
+        }
+      });
+    }
+  );
+
+  $(".store-comment-area").on(
+    "click",
+    ".store-comment-modify-cancel",
+    function() {
+      var id = $(this).data("commentId");
+      var commentTextTag = "#comment-modify-text-" + id;
+      var commentIdTag = "#comment-id-" + id;
+      var commentEditTag = "#comment-edit-" + id;
+      var beforeComment = $(commentTextTag).val();
+      $(commentEditTag).empty();
+      $(commentIdTag).text(beforeComment);
+      var returnTag = '<a class="store-comment-modify" data-comment-id="' +
+      id +
+      '">수정</a>\n' +
+      '<a class="store-comment-delete" data-comment-id="' +
+      id +
+      '">삭제</a>\n';
+      $(commentEditTag).empty();
+      $(commentEditTag).append(returnTag);
+    }
+  );
+
   function addComment(comment, storeId) {
     $.ajax({
       type: "POST",
@@ -186,14 +253,22 @@ $(document).ready(function() {
               "<strong>" +
               item.user.user_name +
               "</strong>\n" +
-              '<p class="store-comment-desc">' +
+              '<div class="store-comment-desc" id="comment-id-' +
+              item.id +
+              '">' +
               item.store_review_comment +
-              "</p>\n";
+              "</div>\n";
             if (item.user.id === userId) {
               comment +=
-                '<div class="my-auto text-danger">\n' +
-                '<a class="store-comment-modify">수정</a>\n' +
-                '<a class="store-comment-delete">삭제</a>\n' +
+                '<div class="my-auto text-danger" id="comment-edit-' +
+                item.id +
+                '">\n' +
+                '<a class="store-comment-modify" data-comment-id="' +
+                item.id +
+                '">수정</a>\n' +
+                '<a class="store-comment-delete" data-comment-id="' +
+                item.id +
+                '">삭제</a>\n' +
                 "</div>";
             }
             comment += "</div>\n" + "</div>";

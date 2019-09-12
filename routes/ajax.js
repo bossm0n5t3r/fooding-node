@@ -82,6 +82,26 @@ router.post("/add-comment", async (req, res, next) => {
   }
 });
 
+router.post("/update-comment", async (req, res, next) => {
+  const { commentId, comment } = req.body;
+  try {
+    await StoreReview.update(
+      {
+        store_review_comment: comment
+      },
+      {
+        where: {
+          id: commentId
+        }
+      }
+    );
+    return res.send({ result: 1 });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
 router.get("/get-all-comments", async (req, res, next) => {
   try {
     const allComments = await StoreReview.findAndCountAll({
