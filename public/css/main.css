@@ -116,7 +116,9 @@
 }
 
 .store-comment-modify,
-.store-comment-delete {
+.store-comment-delete,
+.store-comment-modify-save,
+.store-comment-modify-cancel {
   font-size: 15px;
 }
 
