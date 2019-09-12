@@ -108,6 +108,7 @@
 .store-comment-container {
   position: relative;
   padding-left: 10px;
+  width: 100%;
 }
 
 .store-comment-desc {
