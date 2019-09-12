@@ -102,6 +102,20 @@ router.post("/update-comment", async (req, res, next) => {
   }
 });
 
+router.get("/delete-comment", async (req, res, next) => {
+  try {
+    const deleteStoreReview = await StoreReview.destroy({
+      where: { id: req.query.commentId }
+    });
+    if (deleteStoreReview) {
+      return res.send({ result: 1 });
+    }
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
 router.get("/get-all-comments", async (req, res, next) => {
   try {
     const allComments = await StoreReview.findAndCountAll({

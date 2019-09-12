@@ -170,6 +170,24 @@ $(document).ready(function() {
     $(commentEditTag).append(commentEdit);
   });
 
+  $(".store-comment-area").on("click", ".store-comment-delete", function() {
+    var id = $(this).data("commentId");
+    var check = confirm("댓글을 삭제하시겠습니까?");
+    if (check) {
+      $.ajax({
+        type: "GET",
+        url: "/ajax/delete-comment",
+        dataType: "json",
+        data: { commentId: id },
+        success: function(msg) {
+          if (msg.result) {
+            printComments();
+          }
+        }
+      });
+    }
+  });
+
   $(".store-comment-area").on(
     "click",
     ".store-comment-modify-save",
@@ -202,12 +220,13 @@ $(document).ready(function() {
       var beforeComment = $(commentTextTag).val();
       $(commentEditTag).empty();
       $(commentIdTag).text(beforeComment);
-      var returnTag = '<a class="store-comment-modify" data-comment-id="' +
-      id +
-      '">수정</a>\n' +
-      '<a class="store-comment-delete" data-comment-id="' +
-      id +
-      '">삭제</a>\n';
+      var returnTag =
+        '<a class="store-comment-modify" data-comment-id="' +
+        id +
+        '">수정</a>\n' +
+        '<a class="store-comment-delete" data-comment-id="' +
+        id +
+        '">삭제</a>\n';
       $(commentEditTag).empty();
       $(commentEditTag).append(returnTag);
     }
