@@ -30,13 +30,20 @@ router.get("/login", isNotLoggedIn, (req, res) => {
   });
 });
 
-router.get("/main", isLoggedIn, (req, res, next) => {
-  res.render("main", {
-    title: "메인 화면 - Fooding",
-    user: req.user,
-    appkey: process.env.KAKAO_JS,
-    mainMsg: req.flash("mainMsg")
-  });
+router.get("/main", isLoggedIn, async (req, res, next) => {
+  try {
+    const allStores = await Store.findAll();
+    res.render("main", {
+      title: "메인 화면 - Fooding",
+      user: req.user,
+      appkey: process.env.KAKAO_JS,
+      allStores: allStores,
+      mainMsg: req.flash("mainMsg")
+    });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 });
 
 router.get("/store", isLoggedIn, async (req, res, next) => {

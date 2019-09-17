@@ -19,19 +19,37 @@
     <!-- Main -->
     <div class="container-fluid">
       <div class="row main-div-full">
-          <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 split-left" id="map">
-            <!-- <div class="centered">
-              <h2>Jane Flex</h2>
-              <p>Some text.</p>
-            </div> -->
-          </div>
-          
-          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 split-right">
-            <div class="centered">
-              <h2>John Doe</h2>
-              <p>Some text here too.</p>
+        <!-- Map -->
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 split-left" id="map"></div>
+        <!-- Map -->
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 split-right pl-0 pr-0 store-background">
+          <div class="centered">
+            <!-- <h2>John Doe</h2>
+            <p>Some text here too.</p> -->
+            <% for (var i = 0; i < allStores.length; i++) {
+              var num = String.fromCharCode(65 + i);
+            %>
+            <!-- Store -->
+            <div class="store-container border border-dark border-top-0 border-left-0 border-right-0">
+              <div class="store-name border border-dark border-top-0 border-left-0 border-right-0">
+                <%= num %>. <%= allStores[i].store_name %>
+              </div>
+              <div class="store-address bg-light border border-dark border-top-0 border-left-0 border-right-0">
+                <%= allStores[i].store_address %>
+              </div>
+              <div class="store-time bg-light">
+                <div class="store-start-time float-left border border-dark border-top-0 border-left-0 border-bottom-0">
+                  <%= allStores[i].store_start_time %>
+                </div>
+                <div class="store-end-time">
+                  <%= allStores[i].store_end_time %>
+                </div>
+              </div>
             </div>
+            <!-- Store -->
+            <% } %>
           </div>
+        </div>
       </div>
     </div>
     <!-- Main -->

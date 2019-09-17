@@ -3,22 +3,17 @@
   height: 100%;
   position: relative;
   left: 0;
-  background-color: #111;
 }
 
 .split-right {
   height: 100%;
   position: relative;
   right: 0;
-  background-color: red;
 }
 
 /* If you want the content centered horizontally and vertically */
 .centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   text-align: center;
 }
 
@@ -152,4 +147,17 @@
 
 .store-blank {
   height: 5vh;
+}
+
+.store-start-time {
+  width: 50%;
+}
+
+.store-name {
+  background: lightgreen;
+}
+
+.store-background {
+  background: lightgray;
+  overflow-y: scroll;
 }
