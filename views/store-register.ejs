@@ -37,6 +37,19 @@
                   </div>
                   <div class="store-register-container mb-4">
                     <div class="store-register-key text-center my-auto">
+                      <strong>가게 분류</strong>
+                    </div>
+                    <div class="store-register-value">
+                      <select class="form-control" id="store-category" name="storeCategoryId">
+                        <option value="" selected disabled>가게 분류를 선택해주세요.</option>
+                        <% for (var i = 0; i < categories.length; i++) { %>
+                          <option value="<%= categories[i].id %>"><%= categories[i].store_category_name %></option>
+                        <% } %>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="store-register-container mb-4">
+                    <div class="store-register-key text-center my-auto">
                       <strong>주소</strong>
                     </div>
                     <div class="input-group store-register-value">

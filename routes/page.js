@@ -1,5 +1,5 @@
 const express = require("express");
-const { Store } = require("../models");
+const { Store, StoreCategory } = require("../models");
 const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
 
 const router = express.Router();
@@ -63,24 +63,33 @@ router.get("/store", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.get("/store-register", isLoggedIn, (req, res, next) => {
-  res.render("store-register", {
-    title: "가게 등록 화면 - Fooding",
-    user: req.user,
-    appkey: process.env.KAKAO_JS,
-    storeRegisterError: req.flash("storeRegisterError")
-  });
+router.get("/store-register", isLoggedIn, async (req, res, next) => {
+  try {
+    const allCategories = await StoreCategory.findAll();
+    res.render("store-register", {
+      title: "가게 등록 화면 - Fooding",
+      user: req.user,
+      categories: allCategories,
+      appkey: process.env.KAKAO_JS,
+      storeRegisterError: req.flash("storeRegisterError")
+    });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 });
 
 router.get("/store-modify", isLoggedIn, async (req, res, next) => {
   try {
     const exStore = await Store.find({ where: { id: req.query.id } });
     const userStore = await Store.find({ where: { userId: req.user.id } });
+    const allCategories = await StoreCategory.findAll();
     if (exStore.id == userStore.id) {
       res.render("store-modify", {
         title: "가게 수정 화면 - Fooding",
         user: req.user,
         store: exStore,
+        categories: allCategories,
         appkey: process.env.KAKAO_JS
       });
     } else {

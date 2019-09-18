@@ -30,6 +30,28 @@
                   </div>
                   <div class="store-register-container mb-4">
                     <div class="store-register-key text-center my-auto">
+                      <strong>가게 분류</strong>
+                    </div>
+                    <div class="store-register-value">
+                      <select class="form-control" id="store-category" name="storeCategoryId">
+                        <%
+                          for (var i = 0; i < categories.length; i++) {
+                            if (store.storeCategoryId === categories[i].id) {
+                        %>
+                          <option value="<%= categories[i].id %>" selected="selected"><%= categories[i].store_category_name %></option>
+                        <%
+                            } else {
+                        %>
+                          <option value="<%= categories[i].id %>"><%= categories[i].store_category_name %></option>
+                        <%
+                            }
+                          }
+                        %>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="store-register-container mb-4">
+                    <div class="store-register-key text-center my-auto">
                       <strong>주소</strong>
                     </div>
                     <div class="input-group store-register-value">
@@ -110,7 +132,7 @@
                     </div>
                   </div>
                 </div>
-                <button type="button" class="btn btn-danger float-left my-4 ml-4" id="main-back-btn">돌아가기</button>
+                <button type="button" class="btn btn-danger float-left my-4 ml-4" id="profile-back-btn">돌아가기</button>
                 <button type="button" class="btn btn-primary float-right my-4 mr-4" id="store-modify-btn">수정하기</button>
               </div>
             </div>

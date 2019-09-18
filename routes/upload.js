@@ -108,7 +108,8 @@ router.post(
       store_menu_1,
       store_price_1,
       store_menu_2,
-      store_price_2
+      store_price_2,
+      storeCategoryId
     } = req.body;
     try {
       const exStore = await Store.find({ where: { userId: req.user.id } });
@@ -125,7 +126,8 @@ router.post(
         store_price_1,
         store_menu_2,
         store_price_2,
-        userId: req.user.id
+        userId: req.user.id,
+        storeCategoryId
       });
       for (var i = 0; i < req.files.length; i++) {
         if (i === 0) {
@@ -201,7 +203,8 @@ router.post(
       store_menu_1,
       store_price_1,
       store_menu_2,
-      store_price_2
+      store_price_2,
+      storeCategoryId
     } = req.body;
     try {
       const exStore = await Store.find({ where: { userId: req.user.id } });
@@ -215,7 +218,8 @@ router.post(
           store_price_1,
           store_menu_2,
           store_price_2,
-          userId: req.user.id
+          userId: req.user.id,
+          storeCategoryId
         }, {
           where: {
             userId: req.user.id

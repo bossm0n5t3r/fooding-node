@@ -8,6 +8,15 @@ $(document).ready(function() {
     }
   });
 
+  $("#profile-back-btn").click(function() {
+    let check = confirm(
+      "프로필화면으로 돌아가면 입력된 모든 내용은 취소되고, 지워집니다. 프로필화면으로 돌아가시겠습니까?"
+    );
+    if (check) {
+      window.location.href = "http://localhost:8001/profile";
+    }
+  });
+
   $("#address-btn").click(function() {
     new daum.Postcode({
       oncomplete: function(data) {
@@ -22,6 +31,7 @@ $(document).ready(function() {
     var storeName = $("#store-name")
       .val()
       .trim();
+    var storeCategory = $("#store-category").val();
     var storeAddress = $("#store-address")
       .val()
       .trim();
@@ -45,6 +55,8 @@ $(document).ready(function() {
       .trim();
     if (storeName.length == 0) {
       alert("가게 이름을 입력해주세요!");
+    } else if (storeCategory === null) {
+      alert("가게 분류를 선택해주세요!");
     } else if (storeAddress.length == 0) {
       alert("가게 주소를 입력해주세요!");
     } else if (storeStartTime.length == 0) {
@@ -72,6 +84,7 @@ $(document).ready(function() {
     var storeName = $("#store-name")
       .val()
       .trim();
+    var storeCategory = $("#store-category").val();
     var storeAddress = $("#store-address")
       .val()
       .trim();
@@ -95,6 +108,8 @@ $(document).ready(function() {
       .trim();
     if (storeName.length == 0) {
       alert("가게 이름을 입력해주세요!");
+    } else if (storeCategory === null) {
+      alert("가게 분류를 선택해주세요!");
     } else if (storeAddress.length == 0) {
       alert("가게 주소를 입력해주세요!");
     } else if (storeStartTime.length == 0) {
