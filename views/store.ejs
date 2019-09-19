@@ -22,6 +22,7 @@
           <!-- 가게 이름 카드 -->
           <div class="card store-card-top">
             <div class="card-body">
+              <h5 class="text-center"><%= storeCategoryName.store_category_name %></h5>
               <h1 class="card-title my-1 text-center"><%= store.store_name %></h1>
             </div>
           </div>
@@ -83,7 +84,10 @@
                 </h4>
                 <div class="location-detail ml-3">
                   <span class="txt-common"><strong>업데이트</strong></span>
-                  <span><%= store.updatedAt %></span>
+                  <%
+                    var updateTime = new Date(store.updatedAt)
+                  %>
+                  <span><%= updateTime %></span>
                 </div>
               </div>
             </div>

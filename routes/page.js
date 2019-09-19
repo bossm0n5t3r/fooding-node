@@ -49,11 +49,16 @@ router.get("/main", isLoggedIn, async (req, res, next) => {
 router.get("/store", isLoggedIn, async (req, res, next) => {
   try {
     const exStore = await Store.find({ where: { id: req.query.id } });
+    const storeCategoryName = await StoreCategory.find({
+      attributes: ["store_category_name"],
+      where: { id: exStore.storeCategoryId }
+    });
     if (exStore) {
       res.render("store", {
         title: "가게 화면 - Fooding",
         user: req.user,
         store: exStore,
+        storeCategoryName: storeCategoryName,
         storeMsg: req.flash("storeMsg")
       });
     }
