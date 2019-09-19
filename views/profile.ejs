@@ -16,14 +16,14 @@
     <!-- Navigation -->
     <%- include('navbar-user') %>
     <!-- Main -->
-    <div id="data-set" data-store-id="<%= user.user_storeId %>"></div>
+    <div id="data-set" data-user-id="<%= user.id %>" data-store-id="<%= user.user_storeId %>"></div>
     <div class="container-fluid">
       <div class="row card-columns store-bg-color div-full-min-height">
         <div class="store-card-width mx-auto">
           <!-- 프로필 카드 -->
-          <form method="POST" id="profile" enctype="multipart/form-data" action="/upload/profile">
-            <div class="card store-card-top">
-              <div class="card-body mx-5">
+          <div class="card store-card-top">
+            <div class="card-body mx-5">
+              <form method="POST" id="profile" enctype="multipart/form-data" action="/upload/profile">
                 <h1 class="card-title text-center">프로필</h1>
                 <hr/>
                 <div class="store-register-area mt-4">
@@ -43,7 +43,7 @@
                       <strong>비밀번호</strong>
                     </div>
                     <div class="store-register-value">
-                      <input type="text" class="form-control" name="user_password" id="profile-inputPassword" placeholder="비밀번호 변경 시에만 입력해주세요.">
+                      <input type="password" class="form-control" name="user_password" id="profile-inputPassword" placeholder="비밀번호 변경 시에만 입력해주세요.">
                     </div>
                   </div>
                   <div class="store-register-container mb-4 mr-4">
@@ -51,7 +51,7 @@
                       <strong>비밀번호 확인</strong>
                     </div>
                     <div class="store-register-value">
-                      <input type="text" class="form-control" id="profile-inputConfirmPassword" placeholder="비밀번호 변경 시에만 입력해주세요.">
+                      <input type="password" class="form-control" id="profile-inputConfirmPassword" placeholder="비밀번호 변경 시에만 입력해주세요.">
                     </div>
                   </div>
                   <div class="store-register-container mb-4 mr-4">
@@ -71,13 +71,21 @@
                     </div>
                     <div id="store-name" class="store-register-value"></div>
                   </div>
+                  <div class="store-register-container mb-4 mr-4">
+                    <div class="store-register-key text-center my-auto">
+                      <strong>회원 탈퇴</strong>
+                    </div>
+                    <div class="store-register-value">
+                      <button type="button" class="btn btn-outline-danger btn-block" id="user-delete-btn">탈퇴하기</button>
+                    </div>
+                  </div>
                   <div class="profile-blank"></div>
                 </div>
-                <button type="button" class="btn btn-danger float-left mb-4 ml-4" id="main-back-btn">돌아가기</button>
-                <button type="button" class="btn btn-primary float-right mb-4 mr-4" id="profile-edit-btn">수정하기</button>
-              </div>
+              </form>
+              <button type="button" class="btn btn-danger float-left mb-4 ml-4" id="main-back-btn">돌아가기</button>
+              <button type="button" class="btn btn-primary float-right mb-4 mr-4" id="profile-edit-btn">수정하기</button>
             </div>
-          </form>
+          </div>
           <!-- 프로필 카드 -->
         </div>
       </div>
