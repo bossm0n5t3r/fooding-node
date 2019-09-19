@@ -85,7 +85,7 @@
                 <div class="location-detail ml-3">
                   <span class="txt-common"><strong>업데이트</strong></span>
                   <%
-                    var updateTime = new Date(store.updatedAt)
+                    var updateTime = new Date(store.updatedAt).toLocaleDateString();
                   %>
                   <span><%= updateTime %></span>
                 </div>
