@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  getAllStores();
+
   var mapContainer = document.getElementById("map"), // 지도를 표시할 div
     mapOption = {
       center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -38,4 +40,38 @@ $(document).ready(function() {
       map.setCenter(coords);
     }
   });
+
+  function getAllStores() {
+    $.ajax({
+      type: "GET",
+      url: "/ajax/get-all-stores",
+      dataType: "json",
+      success: function(msg) {
+        $("#store-section").empty();
+        $.each(msg.stores, (i, item) => {
+          var num = String.fromCharCode(65 + i);
+          var store =
+            '<div class="store-container border border-dark border-top-0 border-left-0 border-right-0">' +
+            '<div class="store-name border border-dark border-top-0 border-left-0 border-right-0">' +
+            num +
+            ". " +
+            item.store_name +
+            "</div>" +
+            '<div class="store-address bg-light border border-dark border-top-0 border-left-0 border-right-0">' +
+            item.store_address +
+            "</div>" +
+            '<div class="store-time bg-light">' +
+            '<div class="store-start-time float-left border border-dark border-top-0 border-left-0 border-bottom-0">' +
+            item.store_start_time +
+            "</div>" +
+            '<div class="store-end-time">' +
+            item.store_end_time +
+            "</div>" +
+            "</div>" +
+            "</div>";
+          $("#store-section").append(store);
+        });
+      }
+    });
+  }
 });

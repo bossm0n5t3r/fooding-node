@@ -130,4 +130,28 @@ router.get("/get-all-comments", async (req, res, next) => {
   }
 });
 
+router.get("/get-all-stores", async (req, res, next) => {
+  try {
+    const allStores = await Store.findAll();
+    return res.send({ stores: allStores });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+router.delete("/user-delete", async (req, res, next) => {
+  const { id } = req.body;
+  try {
+    const deleteUser = await User.destroy({ where: { id } });
+    if (deleteUser) {
+      req.flash("msg", "회원 탈퇴되었습니다. 이용해주셔서 감사합니다.");
+      return res.redirect("/");
+    }
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
 module.exports = router;
