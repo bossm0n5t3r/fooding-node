@@ -19,7 +19,9 @@ $(document).ready(function() {
       .trim();
     if (inputPassword !== inputConfirmPassword) {
       alert("비밀번호가 서로 일치하지 않습니다.");
-    } else {
+    } else if (inputPassword.length > 15) {
+      alert("비밀번호가 너무 깁니다.");
+    } else if (inputPassword.length > 0) {
       $("#profile").submit();
     }
   });
