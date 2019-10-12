@@ -41,37 +41,58 @@ $(document).ready(function() {
     }
   });
 
+  $("#search-bar").keyup(function(e) {
+    var keyword = $("#search-bar").val();
+    if (e.keyCode === 13 && keyword.length > 0) {
+      $.ajax({
+        type: "POST",
+        url: "/ajax/get-all-stores",
+        dataType: "json",
+        data: {
+          keyword: keyword
+        },
+        success: function(msg) {
+          generateStoreContainers(msg.stores);
+        }
+      });
+    }
+  });
+
   function getAllStores() {
     $.ajax({
       type: "GET",
       url: "/ajax/get-all-stores",
       dataType: "json",
       success: function(msg) {
-        $("#store-section").empty();
-        $.each(msg.stores, (i, item) => {
-          var num = String.fromCharCode(65 + i);
-          var store =
-            '<div class="store-container border border-dark border-top-0 border-left-0 border-right-0">' +
-            '<div class="store-name border border-dark border-top-0 border-left-0 border-right-0">' +
-            num +
-            ". " +
-            item.store_name +
-            "</div>" +
-            '<div class="store-address bg-light border border-dark border-top-0 border-left-0 border-right-0">' +
-            item.store_address +
-            "</div>" +
-            '<div class="store-time bg-light">' +
-            '<div class="store-start-time float-left border border-dark border-top-0 border-left-0 border-bottom-0">' +
-            item.store_start_time +
-            "</div>" +
-            '<div class="store-end-time">' +
-            item.store_end_time +
-            "</div>" +
-            "</div>" +
-            "</div>";
-          $("#store-section").append(store);
-        });
+        generateStoreContainers(msg.stores);
       }
+    });
+  }
+
+  function generateStoreContainers(stores) {
+    $("#store-section").empty();
+    $.each(stores, (i, item) => {
+      var num = String.fromCharCode(65 + i);
+      var store =
+        '<div class="store-container border border-dark border-top-0 border-left-0 border-right-0">' +
+        '<div class="store-name border border-dark border-top-0 border-left-0 border-right-0">' +
+        num +
+        ". " +
+        item.store_name +
+        "</div>" +
+        '<div class="store-address bg-light border border-dark border-top-0 border-left-0 border-right-0">' +
+        item.store_address +
+        "</div>" +
+        '<div class="store-time bg-light">' +
+        '<div class="store-start-time float-left border border-dark border-top-0 border-left-0 border-bottom-0">' +
+        item.store_start_time +
+        "</div>" +
+        '<div class="store-end-time">' +
+        item.store_end_time +
+        "</div>" +
+        "</div>" +
+        "</div>";
+      $("#store-section").append(store);
     });
   }
 });
