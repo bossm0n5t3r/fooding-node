@@ -140,6 +140,8 @@ router.get("/get-all-stores", async (req, res, next) => {
   }
 });
 
+//TODO main page 의 "/get-all-stores" post 구현
+
 router.delete("/user-delete", async (req, res, next) => {
   const { id } = req.body;
   try {
