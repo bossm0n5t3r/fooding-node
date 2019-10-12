@@ -26,6 +26,21 @@ $(document).ready(function() {
     }
   });
 
+  $("#user-delete-btn").click(function() {
+    let check = confirm(
+      "탈퇴하면 모든 내용은 지워집니다. 회원 탈퇴하시겠습니까?"
+    );
+    if (check) {
+      var userId = $("#data-set").data("userId");
+      $.ajax({
+        type: "DELETE",
+        url: "/ajax/user-delete",
+        dataType: "json",
+        data: { id: userId }
+      });
+    }
+  });
+
   $("#store-name").on("click", "#store-delete-btn", function() {
     var confirmCheck = confirm(
       "정말 가게를 삭제하시겠습니까? 삭제되면 복구되지 않습니다."
