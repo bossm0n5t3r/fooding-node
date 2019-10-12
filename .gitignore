@@ -8,3 +8,6 @@ uploads/
 
 # config file
 config.json
+
+# sql directories
+sql/
